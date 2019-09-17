@@ -11,11 +11,16 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
     <title>{{ config('app.name', 'ICGSys') }}</title>
+
+    <!-- page css -->
+    <link href="dist/css/pages/login-register-lock.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
     
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pages/login-register-lock.css') }}">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}"> -->
     
 </head>
 
@@ -34,64 +39,53 @@
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <section id="wrapper" class="login-register login-sidebar">
-        <div class="login-box card">
-            <div class="card-body">
-                <form class="form-horizontal form-material" method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
-                @csrf 
-                    <div class="form-group m-t-40">
-                        <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-M@il') }}</label>
-
-                        <div class="col-md-12">
-                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-
-                            @if ($errors->has('email'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                </span>
-                            @endif
-                        </div>
+    <section id="wrapper" class="login-register login-sidebar" style="background-image:url(https://images.pexels.com/photos/2422293/pexels-photo-2422293.jpeg?cs=srgb&dl=adult-business-computer-2422293.jpg&fm=jpg);">
+    <div class="login-box card">
+        <div class="card-body">
+            <form class="form-horizontal form-material" id="loginform" method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
+                    @csrf
+                <a href="javascript:void(0)" class="text-center db"><img src="https://res-3.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco/v1491019028/ixlievthjuonrdzgrh4g.png" alt="Home" /><br/></a>
+                <div class="form-group m-t-40">
+                    <div class="col-xs-12">
+                        <input class="form-control" type="email" required="" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                    @if ($errors->has('email'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
                     </div>
-
-                    <div class="form-group row">
-                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                        <div class="col-md-6">
-                            <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                            @if ($errors->has('password'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('password') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Recuerdame') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Olvidaste tu contraseña?') }}
-                                </a>
-                            </div>
-                        </div>
-                    </form>
                 </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" required="" placeholder="Password" name="password">
+                        @if ($errors->has('password'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1" {{ old('remember') ? 'checked' : '' }}>
+                            <label class="custom-control-label" for="customCheck1">{{ __('Recuerdame') }}</label>
+                            <a href="{{ route('password.request') }}" id="to-recover" class="text-dark pull-right">
+                                <i class="fa fa-lock m-r-5"></i> {{ __('Olvidaste tu contraseña?') }}
+                            </a> 
+                        </div>     
+                    </div>
+                </div>
+                <div class="form-group text-center m-t-20">
+                    <div class="col-xs-12">
+                        <button class="btn btn-info btn-lg btn-block text-uppercase btn-rounded" type="submit">
+                            {{ __('Login') }}
+                        </button>
+                    </div>
+                </div>
+
+            </form>    
+            </div>
             </div>
         </div>
     </section>

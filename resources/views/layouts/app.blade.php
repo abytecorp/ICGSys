@@ -14,11 +14,16 @@
     <!-- Styles -->
 
     <!-- Custom CSS -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     <!-- Dashboard 1 Page CSS -->
     
-    @yield('css')
+    <!-- @yield('css') -->
 
+    <!-- Custom CSS -->
+    <link href="./node_modules/morrisjs/morris.css" rel="stylesheet">
+    <link href="./dist/css/style.min.css" rel="stylesheet">
+    <!-- Dashboard 1 Page CSS -->
+    <link href="./dist/css/pages/dashboard1.css" rel="stylesheet">
 
 </head>
 
@@ -39,16 +44,16 @@
                             <!-- Logo icon --><b>
                                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                                 <!-- Dark Logo icon           logo-icon.png          -->
-                                <img src="{{ Storage::disk('public')->url('images/logo-icon.png') }}" alt="homepage" class="dark-logo" />
+                                <img src="./dist/images/logo-light.png" alt="homepage" class="dark-logo" />
                                 <!-- Light Logo icon -->
-                                <img src="{{ Storage::disk('public')->url('images/logo-light-icon.png') }}" alt="homepage" class="light-logo" />
+                                <img src="./dist/images/logo-light.png" alt="homepage" class="light-logo" />
                             </b>
                             <!--End Logo icon -->
                             <!-- Logo text --><span>
                              <!-- dark Logo text -->
-                             <img src="{{ Storage::disk('public')->url('images/logo-text.png') }}" alt="homepage" class="dark-logo" />
+                             <img src="./dist/images/only-text-light.png" alt="homepage" class="dark-logo" />
                              <!-- Light Logo text -->    
-                             <img src="{{ Storage::disk('public')->url('images/logo-light-text.png') }}" class="light-logo" alt="homepage" /></span> </a>
+                             <img src="./dist/images/only-text-light.png" class="light-logo" alt="homepage" /></span> </a>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
@@ -141,25 +146,25 @@
                                             <div class="message-center">
                                                 <!-- Message -->
                                                 <a href="javascript:void(0)">
-                                                    <div class="user-img"> <img src="{{ Storage::disk('public')->url('images/users/1.jpg') }}" alt="user" class="img-circle">  <span class="profile-status online pull-right"></span> </div>
+                                                    <div class="user-img"> <img src="./dist/images/users/6.jpg" alt="user" class="img-circle">  <span class="profile-status online pull-right"></span> </div>
                                                     <div class="mail-contnet">
                                                         <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span> </div>
                                                 </a>
                                                 <!-- Message -->
                                                 <a href="javascript:void(0)">
-                                                    <div class="user-img"> <img src="{{ Storage::disk('public')->url('images/users/2.jpg') }}" alt="user" class="img-circle">  <span class="profile-status busy pull-right"></span> </div>
+                                                    <div class="user-img"> <img src="./dist/images/users/6.jpg" alt="user" class="img-circle">  <span class="profile-status busy pull-right"></span> </div>
                                                     <div class="mail-contnet">
                                                         <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span> </div>
                                                 </a>
                                                 <!-- Message -->
                                                 <a href="javascript:void(0)">
-                                                    <div class="user-img"> <img src="{{ Storage::disk('public')->url('images/users/3.jpg') }}" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
+                                                    <div class="user-img"> <img src="./dist/images/users/6.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
                                                     <div class="mail-contnet">
                                                         <h5>Arijit Sinh</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span> </div>
                                                 </a>
                                                 <!-- Message -->
                                                 <a href="javascript:void(0)">
-                                                    <div class="user-img"> <img src="{{ Storage::disk('public')->url('images/users/4.jpg') }}" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
+                                                    <div class="user-img"> <img src="./dist/images/users/6.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
                                                     <div class="mail-contnet">
                                                         <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span> </div>
                                                 </a>
@@ -186,13 +191,13 @@
                                             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                                 <div class="carousel-inner" role="listbox">
                                                     <div class="carousel-item active">
-                                                        <div class="container"> <img class="d-block img-fluid" src="{{ Storage::disk('public')->url('images/big/img1.jpg') }}" alt="First slide"></div>
+                                                        <div class="container"> <img class="d-block img-fluid" src="https://mega.nz/#!IQE2wSLB!ovYzvCOdUPf6PHXyHw7D_PHaNnqBkkrqiQXDtAJduJU" alt="First slide"></div>
                                                     </div>
                                                     <div class="carousel-item">
-                                                        <div class="container"><img class="d-block img-fluid" src="{{ Storage::disk('public')->url('images/big/img2.jpg') }}" alt="Second slide"></div>
+                                                        <div class="container"><img class="d-block img-fluid" src="https://mega.nz/#!IQE2wSLB!ovYzvCOdUPf6PHXyHw7D_PHaNnqBkkrqiQXDtAJduJU" alt="Second slide"></div>
                                                     </div>
                                                     <div class="carousel-item">
-                                                        <div class="container"><img class="d-block img-fluid" src="{{ Storage::disk('public')->url('images/big/img3.jpg') }}" alt="Third slide"></div>
+                                                        <div class="container"><img class="d-block img-fluid" src="https://mega.nz/#!IQE2wSLB!ovYzvCOdUPf6PHXyHw7D_PHaNnqBkkrqiQXDtAJduJU" alt="Third slide"></div>
                                                     </div>
                                                 </div>
                                                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
@@ -277,7 +282,7 @@
                                 @guest
 
                                 @else
-                                <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ Storage::disk('public')->url(Auth::user()->avtr) }}" alt="user" class=""> <span class="hidden-md-down">{{ Auth::user()->name }} {{ Auth::user()->last_name }} &nbsp;<i class="fa fa-angle-down"></i></span> </a>
+                                <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="./dist/images/users/6.jpg" alt="user" class=""> <span class="hidden-md-down">{{ Auth::user()->first_name }} {{ Auth::user()->last_first_name }} &nbsp;<i class="fa fa-angle-down"></i></span> </a>
                                 @endguest
                                 <div class="dropdown-menu dropdown-menu-right animated flipInY">
                                     <!-- text-->
@@ -318,81 +323,19 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                            @guest
-
-                            @else
-                        <li class="user-pro"> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><img src="{{ Storage::disk('public')->url(Auth::user()->avtr) }}" alt="user-img" class="img-circle"><span class="hide-menu">{{ Auth::user()->name }} {{ Auth::user()->last_name }}</span></a>
-                            @endguest
+                        <li class="user-pro"> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><img src="./dist/images/users/6.jpg" alt="user-img" class="img-circle"><span class="hide-menu">{{ Auth::user()->first_name }} {{ Auth::user()->last_second_name }}</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="javascript:void(0)"><i class="ti-user"></i> Mi perfil</a></li>
                                 <li><a href="javascript:void(0)"><i class="ti-wallet"></i> Mi Historial</a></li>
                                 <li><a href="javascript:void(0)"><i class="ti-email"></i> Buzon</a></li>
-                                <li><a href="register"><i class="ti-settings"></i> Configuración de cuenta</a></li>
-                                
+                                <li><a href="register"><i class="ti-settings"></i> Configuración de cuenta</a></li>  
                             </ul>
                         </li>
-
-                        @can('affiliations.index')
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="icon-notebook"></i><span class="hide-menu">Afiliaciones </span></a>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-user"></i><span class="hide-menu">Interesados <span class="badge badge-pill badge-primary text-white ml-auto">25</span></span></a>
                             <ul aria-expanded="false" class="collapse">
-                            <li><a href="{{ route('affiliations.index') }}"> Afiliaciones </a></li>
-                            <li><a href="{{ route('id_types.index') }}"> Tipos de Identificacion  </a></li>
-                             </ul>
+                                <li><a href="{{ route('customers.index') }}"><i class="ti-plus"></i>Nuevo Interesado</a></li>
+                            </ul>
                         </li>
-                        @endcan
-                        @can('guild-argumentation.index')
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="icon-book-open"></i><span class="hide-menu">Argumentación Gremial </span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{ route('trade_union_argumentation.index') }}"> Panel de control  </a></li>
-                             </ul>
-                        </li>
-                        @endcan
-                        @can('business-str.index')
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="icon-flag"></i><span class="hide-menu">Fortalecimiento Empresarial </span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="#"> opcion 1  </a></li>
-                             </ul>
-                        </li>
-                        @endcan
-                        @can('divulgation.index')
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="icon-paper-plane"></i><span class="hide-menu">Divulgación </span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="{{ route('divulgation.index') }}"> Panel de control  </a></li>
-                                <li><a href="{{ route('events.index') }}"> Eventos </a></li>
-                                <li><a href="{{ route('event_types.index') }}"> Configurar los tipos de evento </a></li>
-                             </ul>
-                        </li>
-                        @endcan
-                        @can('logistical-support.index')
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="icon-bubble"></i><span class="hide-menu">Apoyo Logistico </span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="#"> opcion 1  </a></li>
-                             </ul>
-                        </li>
-                        @endcan
-                        @can('users.index')
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="icon-people"></i><span class="hide-menu">Usuarios </span></a>
-                            <ul aria-expanded="false" class="collapse">
-                            @can('users.create')
-                            <li><a href={{ route('users.create') }}> Nuevo Usuario  </a></li>
-                            @endcan
-                            @can('users.create')
-                            <li><a href={{ route('users.index') }}> Permisos Usuarios  </a></li>
-                            @endcan
-                             </ul>
-                        </li>
-                        @endcan
-                        @can('role.index')
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="icon-bubble"></i><span class="hide-menu">Configuracion </span></a>
-                            <ul aria-expanded="false" class="collapse">
-                            <li><a href="{{ route('roles.index') }}"> Roles  </a></li>
-                            <li><a href="{{ route('company_states.index') }}"> Estados de empresas  </a></li>
-                            <li><a href="{{ route('company_types.index') }}"> Tipos de empresas  </a></li>
-                             </ul>
-                        </li>
-                        @endcan
-  
-                
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -403,7 +346,7 @@
 
   
         {{-- <main class="py-4"> --}}
-           <div id="log-in">
+           <div id="app">
             @yield('content')
         </div> 
         {{-- </main> --}}
@@ -413,6 +356,7 @@
 </div>
 
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="./dist/js/sidebarmenu.js"></script>
 
 
      @yield('script')

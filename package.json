@@ -22,5 +22,12 @@
         "sass-loader": "^7.1.0",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "moments": "0.0.2",
+        "toastr": "^2.1.4",
+        "vue-float-label": "^1.6.1",
+        "vue-multiselect": "^2.1.6",
+        "vue-select": "^3.2.0"
     }
 }
