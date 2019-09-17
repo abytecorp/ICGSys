@@ -29,17 +29,19 @@ class ApiController extends Controller
     public function customersNew(Request $request)
     {
         $company = Customer::create([
+            'idn' => $request['document_type_id'],
             'idn' => $request['idn'],
-            'names' => strtoupper($request['names']),
-            'last_names' => strtoupper($request['last_names']),
-            'id_number' => $request['id_number'],
-            'id_city' => $request['id_city'],
+            'name' => strtoupper($request['name']),
+            'first_last_name' => strtoupper($request['first_last_name']),
+            'second_last_name' => strtoupper($request['second_last_name']),
+            'birth_date' => $request['birth_date'],
+            'born_city' => $request['born_city'],
+            'address_city' => $request['address'],
             'address' => $request['address'],
-            'position' => $request['position'],
             'email' => $request['email'],
             'id_company' => $request['id_company'],
             'us_cr' => 28,
-            '', 'name', 'first_last_name', 'second_last_name', 'birth_date', 'born_city', 'address', 'address_city', 'neighborhood', 'cellphone', 'phone', 'mail', 'us_cr'
+            '', '', '', '', '', '', '', '', 'neighborhood', 'cellphone', 'phone', 'mail', 'us_cr'
         ]);
         return;
     }
