@@ -26,6 +26,8 @@ Vue.component('dashboard', require('./components/CreditStudy/Dashboard.vue').def
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+import EventBus from './plugins/event-bus'
+Vue.use(EventBus)
 
 const app = new Vue({
     el: '#app',

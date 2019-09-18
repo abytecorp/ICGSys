@@ -10,8 +10,8 @@
 @include('layouts.title')
 
 
-            <div class="row">
+            
             <dashboard :user="{{ Auth::user() }}"></dashboard>
-            </div>
+            
 </div>
 @endsection

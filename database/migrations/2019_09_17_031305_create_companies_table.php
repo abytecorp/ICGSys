@@ -26,10 +26,13 @@ class CreateCompaniesTable extends Migration
             $table->string('phone1')->nullable();
             $table->string('phone2')->nullable();
             $table->string('phone3')->nullable();
-            $table->integer('ec_ac_id')->unsigned();
+            $table->string('economic_activity')->nullable();
+            $table->integer('city_id')->nullable();
+            $table->integer('ec_ac_id')->unsigned()->nullable();
             $table->integer('us_cr')->unsigned();
             $table->timestamps();
 
+            $table->foreign('city_id')->references('id')->on('cities');
             $table->foreign('ec_ac_id')->references('id')->on('economic_activities');
             $table->foreign('us_cr')->references('id')->on('users');
         });

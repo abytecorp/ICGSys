@@ -23,11 +23,12 @@ import Multiselect from 'vue-multiselect/src/Multiselect.vue'
    components: { Multiselect },
    data () {
      return {
-       selected: null,
-       options: [],
-       name:  'name',
-       taggingOptions:   [],
-       taggingSelected:  []
+       selected:           null,
+       options:           [],
+       name:              'name',
+       taggingOptions:    [],
+       taggingSelected:   [],
+       errors:            []
      }
    },
    created : function (){

@@ -20,6 +20,20 @@ Route::get('/api/{user}/get-study-credits-by-user', 'ApiController@getStudyCredi
 Route::get('/api/get-id-types', 'ApiController@getIdTypes');
 ///api/assistants-external
 Route::post('/api/assistants-external', 'ApiController@customersNew');
+///api/address/get-nomenclatures
+Route::get('/api/address/get-nomenclatures', 'ApiController@getNomenclatures');
+// get customers from api
+Route::get('/api/get-customers','ApiController@getCustomers');
+// get companies
+Route::get('/api/get-companies-api','ApiController@getCompaniesApi');
+// company by post
+Route::post('/api/company','ApiController@companyStore');
+// get company by id
+Route::get('/api/{company}/get-company-by-id','ApiController@getCompanyById');
+// new activity
+Route::post('/api/store-new-activity','ApiController@storeNewActivity');
+// get activities
+Route::get('/api/get-activities', 'ApiController@getActivities');
 
 Route::get('/', function () {
     return view('auth.login');

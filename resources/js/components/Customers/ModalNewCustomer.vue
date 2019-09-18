@@ -11,36 +11,36 @@
                     <form method="POST" v-on:submit.prevent="storeCustomer">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="control-label muted">Tipo de identificación (*)</label>
-                                    <select name="" id="" class="form-control" v-model="customer.id_type">
+                                    <label class="control-label muted" >Tipo de identificación (*)</label>
+                                    <select class="form-control" v-model="customer.id_type">
                                         <option v-for="idType in idTypes" :key="idType.id" :value="idType.id">{{ idType.id_type }}</option>
                                     </select>
                                      <span v-for="error in errors" class="text-danger" :key="error.error">{{ error.id_type }}</span>
                                 </div>
                                 <FloatingLabel
                                     :config="{label: 'Identificación (*)', hasError: err.idn, hasClearButton: false }">
-                                    <input type="number" class="form-control" name="identificationInput" v-model="customer.idn">
+                                    <input type="number" class="form-control" name="identificationInput" id="identificationInput" v-model="customer.idn">
                                     <span v-for="error in errors" class="text-danger" :key="error.error">{{ error.idn }}</span>
                                 </FloatingLabel>
                             </div>
                         <div class="col-md-12">
                         <FloatingLabel
                             :config="{label: 'Nombres  (*)', hasError: err.name, hasClearButton: false }">
-                            <input type="text" class="form-control" name="namesInput" v-model="customer.name">
+                            <input type="text" class="form-control" name="nameInput" id="nameInput" v-model="customer.name">
                             <span v-for="error in errors" class="text-danger" :key="error.error">{{ error.name }}</span>
                         </FloatingLabel>
                         </div>
                         <div class="col-md-12">
                         <FloatingLabel
                             :config="{label: 'Primer Apellido (*)', hasError: err.first_last_name, hasClearButton: false }">
-                            <input type="text" class="form-control" name="last_namesInput" v-model="customer.first_last_name">
+                            <input type="text" class="form-control" name="firstLastNameInput" id="firstLastNameInput" v-model="customer.first_last_name">
                             <span v-for="error in errors" class="text-danger" :key="error.error">{{ error.first_last_name }}</span>
                         </FloatingLabel>
                         </div>
                         <div class="col-md-12">
                         <FloatingLabel
                             :config="{label: 'Segundo Apellido (*)', hasError: err.second_last_name, hasClearButton: false }">
-                            <input type="text" class="form-control" name="last_namesInput" v-model="customer.second_last_name">
+                            <input type="text" class="form-control" name="secondLastNameInput" id="secondLastNameInput" v-model="customer.second_last_name">
                             <span v-for="error in errors" class="text-danger" :key="error.error">{{ error.second_last_name }}</span>
                         </FloatingLabel>
                         </div>
@@ -49,14 +49,14 @@
                             <h6 class="text-muted" for="">       Fecha de nacimiento (*)</h6>
                         <FloatingLabel
                             :config="{label: '', hasError: err.birth_date, hasClearButton: false }">
-                            <input type="date" class="form-control" name="last_namesInput" v-model="customer.birth_date">
+                            <input type="date" class="form-control" name="birthDayInput" id="birthDayInput" v-model="customer.birth_date">
                             <span v-for="error in errors" class="text-danger" :key="error.error">{{ error.birth_date }}</span>
                         </FloatingLabel>
                         </div>
                         <hr>
                         <div class="col-md-12">
                             <h6 class="text-muted" for="">       Lugar de nacimiento (*)</h6>
-                            <v-select :options="cities" v-model="customer.born_city" placeholder="Seleccione la ciudad donde vive"  label="city">
+                            <v-select :options="cities" v-model="customer.born_city" placeholder="Seleccione la ciudad donde vive" id="bornCity" name="bornCity" label="city">
                                 <template slot="option" slot-scope="option">
                                     {{ option.city }} 
                                 </template>
@@ -75,28 +75,37 @@
                         <div class="col-md-12">
                         <FloatingLabel
                             :config="{label: 'Barrio (*)', hasError: err.neighborhood, hasClearButton: false }">
-                            <input type="text" class="form-control" name="telInput" v-model="customer.neighborhood">
+                            <input type="text" class="form-control" name="neighborhoodInput" id="neighborhoodInput" v-model="customer.neighborhood">
                             <span v-for="error in errors" class="text-danger" :key="error.error">{{ error.neighborhood }}</span>
                         </FloatingLabel>
                         </div>
                         <div class="col-md-12">
+                            <h6 class="text-muted" for="">       Ciudad de residencia (*)</h6>
+                            <v-select :options="cities" v-model="customer.address_city" placeholder="Seleccione la ciudad donde vive" id="addressCity" name="addressCity" label="city">
+                                <template slot="option" slot-scope="option">
+                                    {{ option.city }} 
+                                </template>
+                            </v-select>
+                            <span v-for="error in errors" class="text-danger" :key="error.error">{{ error.born_city }}</span>
+                        </div>
+                        <div class="col-md-12">
                         <FloatingLabel
                             :config="{label: 'Telefono', hasError: err.phone, hasClearButton: false }">
-                            <input type="text" class="form-control" name="telInput" v-model="customer.phone">
+                            <input type="text" class="form-control" name="phoneInput" id="phoneInput" v-model="customer.phone">
                             <span v-for="error in errors" class="text-danger" :key="error.error">{{ error.phone }}</span>
                         </FloatingLabel>
                         </div>
                         <div class="col-md-12">
                         <FloatingLabel
                             :config="{label: 'Celular (*)', hasError: err.cellphone, hasClearButton: false }">
-                            <input type="text" class="form-control" name="celInput" v-model="customer.cellphone">
+                            <input type="text" class="form-control" name="celInput" id="celInput" v-model="customer.cellphone">
                             <span v-for="error in errors" class="text-danger" :key="error.error">{{ error.cellphone }}</span>
                         </FloatingLabel>
                         </div>
                         <div class="col-md-12">
                         <FloatingLabel
                             :config="{label: 'Em@il', hasError: err.mail, hasClearButton: false }">
-                            <input type="text" class="form-control" name="mailInput" v-model="customer.mail" @keypress="valMailFormat()">
+                            <input type="text" class="form-control" name="mailInput" id="mailInput" v-model="customer.mail" @keypress="valMailFormat()">
                             <span v-for="error in errors" class="text-danger" :key="error.error">{{ error.mail }}</span>
                             <span class="text-danger">{{ err.mail }}</span>
                         </FloatingLabel>
@@ -120,6 +129,7 @@
 </template>
 <script>
 import toastr from 'toastr';
+import 'toastr/build/toastr.css';
 import FloatingLabel from 'vue-simple-floating-labels';
 import vSelect from 'vue-select';
 Vue.component( 'v-select', vSelect );
@@ -198,10 +208,13 @@ export default {
             });
         },
         storeCustomer : function() {
-            this.customer.id_city = typeof(this.customer.id_city) == 'object' ? this.customer.id_city.id : this.customer.id_city;
+            this.customer.born_city = typeof(this.customer.born_city) == 'object' ? this.customer.born_city.id : this.customer.born_city;
+            this.customer.address_city = typeof(this.customer.address_city) == 'object' ? this.customer.address_city.id : this.customer.address_city;
+            this.customer.document_type_id = typeof(this.customer.id_type) == 'object' ? this.customer.id_type.id : this.customer.id_type;
+            console.log(this.customer)
             var url = '/api/assistants-external';
-            axios.post(url, this.assistant).then(response => {
-                toastr.success(`Se ha creado el cliente ${this.customer.names} ${this.customer.last_names} con exito!`);
+            axios.post(url, this.customer).then(response => {
+                toastr.success(`Se ha creado el cliente ${this.customer.name} ${this.customer.first_last_name} con exito!`);
                 $('#newCustomerModal').modal('hide');
                 this.$emit('closeNewCustomer');
             }).catch(error => {

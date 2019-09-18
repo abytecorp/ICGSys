@@ -3,10 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateCustomerRequest;
+use App\Http\Requests\CreateCompanyRequest;
 use App\City;
 use App\Study_credit;
 use App\Document_type;
 use App\Customer;
+use App\Nomenclature;
+use App\Change;
+use App\Company;
+use App\Activity;
+use Auth;
 use DB;
 
 class ApiController extends Controller
@@ -26,23 +33,88 @@ class ApiController extends Controller
     {
         return $id_types = Document_type::get();
     }
-    public function customersNew(Request $request)
+    public function getNomenclatures() 
     {
-        $company = Customer::create([
-            'idn' => $request['document_type_id'],
+        return $nomenclatures = Nomenclature::all();
+    }
+    public function getCustomers()
+    {
+        return $customers = Customer::select(DB::raw('CONCAT(IFNULL(customers.name,"")," ",IFNULL(customers.first_last_name,"")," ( ",IFNULL(customers.idn,"")," ) ") AS label'),
+        'id', 'document_type_id', 'idn', 'name', 'first_last_name', 'second_last_name', 'birth_date', 'born_city', 'address', 'address_city', 'neighborhood', 'cellphone', 'phone', 'mail', 'us_cr')
+        ->get();
+    }
+    public function getCompaniesApi()
+    {
+        $companies = Company::select(DB::raw('CONCAT(IFNULL(companies.bs_name,"")," ",IFNULL(companies.acronym,"")," ( ",IFNULL(companies.nit,"")," ) ") AS label'),'companies.id AS company_id','companies.bs_name','companies.acronym','companies.nit','companies.verification_digit',
+        'companies.web','companies.email','companies.address','companies.logo','companies.phone1',
+        'companies.phone2','companies.phone3','companies.city_id')
+        ->get();
+        return $companies;
+    }
+    public function customersNew(CreateCustomerRequest $request)
+    {
+        $customer = Customer::create([
+            'document_type_id' => $request['document_type_id'],
             'idn' => $request['idn'],
             'name' => strtoupper($request['name']),
             'first_last_name' => strtoupper($request['first_last_name']),
             'second_last_name' => strtoupper($request['second_last_name']),
             'birth_date' => $request['birth_date'],
             'born_city' => $request['born_city'],
-            'address_city' => $request['address'],
+            'address_city' => $request['address_city'],
             'address' => $request['address'],
-            'email' => $request['email'],
-            'id_company' => $request['id_company'],
-            'us_cr' => 28,
-            '', '', '', '', '', '', '', '', 'neighborhood', 'cellphone', 'phone', 'mail', 'us_cr'
+            'neighborhood' => $request['neighborhood'],
+            'mail' => $request['mail'],
+            'phone' => $request['phone'],
+            'cellphone' => $request['cellphone'],
+            'us_cr' => Auth::user()->id,
         ]);
-        return;
+        Change::create([
+            'description' => 'Creo el cliente:'.$request['name'].' '.$request['first_last_name'].' correctamente.',
+            'id_item' => 10,
+            'us_cr' => Auth::user()->id,
+        ]);
+        return $customer;
+    }
+    public function companyStore(CreateCompanyRequest $request)
+    {
+        if($request['logoChanged']){
+            $exploded = explode(',', $request->logo);
+                    $decoded = base64_decode($exploded[1]);
+            if(str_contains($exploded[0],'jpeg'))
+                $extension = 'jpg';
+            else
+                $extension = 'png';
+            $fileName = str_random().'.'.$extension;
+            $path = public_path().'/storage/logos/'.$fileName;
+            file_put_contents($path, $decoded);
+            $logo = $request->file['logo'];
+            $request['logo'] = $fileName;
+            }else{
+                $request['logo'] = '';
+            }
+            $request['bs_name'] = strtoupper($request['bs_name']);
+            $request['acronym'] = strtoupper($request['acronym']);
+            $request['status_id'] = 1;
+            $request['us_cr'] = Auth::user()->id;
+        $company = Company::create($request->all());
+        Change::create([
+            'description' => 'Creo la empresa:'.$request['bs_name'].' '.$request['nit'].' correctamente.',
+            'id_item' => 10,
+            'us_cr' => Auth::user()->id,
+        ]);
+        return $company;
+    }
+    public function getCompanyById(Company $company)
+    {
+        return $company;
+    }
+    public function getActivities()
+    {
+        return $activities = Activity::all();
+    }
+    public function storeNewActivity(Request $request)
+    {
+        return $activity = Activity::create($request->all());
     }
 }
