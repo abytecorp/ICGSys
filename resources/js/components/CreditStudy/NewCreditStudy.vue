@@ -24,7 +24,7 @@
                     <div class="card-body">
                         <div class="col-md-12">
                             <h6 class="text-muted" for=""> Seleccione un cliente(*)</h6>
-                            <v-select :options="customers" v-model="creditStudy.customer" placeholder="Digite el nombre del cliente o su numero de identificación" id="customer" name="customers" label="label">
+                            <v-select :options="customers" v-model="creditStudy.customer" @input="setCustomer" placeholder="Digite el nombre del cliente o su numero de identificación" id="customer" name="customers" label="label">
                                 <template slot="option" slot-scope="option">
                                     {{ option.label }} 
                                 </template>
@@ -54,6 +54,11 @@
                             <span v-if="err.customer" class="text-danger">{{ err.customer }}</span>
                             <hr>
                             <button class="btn waves-effect waves-light btn-xs btn-info" @click="setModalNewCompany()">Ingrese una nueva empresa</button>
+                            <hr>
+                            <workInformations v-if="isWorkInformations"
+                                :workInfoByCredStudy="workInfoByCredStudy"
+                                :customer_id="creditStudy.customer.id">
+                            </workInformations>
                         </div>
                     </div>
                 </div>
@@ -69,7 +74,11 @@
         </div>
         <!-- <modal-new-external-company v-if="isNewCompany" :companies="companies" @setCompany="setCompany"></modal-new-external-company> -->
     <modalNewWorkXp v-if="isNewCreditStudy && companySel.company_id"
-        :company_id="companySel.company_id">
+        :company_id="companySel.company_id"
+        :customer="creditStudy.customer"
+        @closeModalNewWorkXp="closeModalNewWorkXp"
+        @getWorkExperiencesByCustomer="getWorkExperiencesByCustomer"
+        @setWorkXpToCreditStudy="setWorkXpToCreditStudy">
     </modalNewWorkXp>
     </div>
 </template>
@@ -78,6 +87,7 @@ import {FormWizard, TabContent} from 'vue-form-wizard'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 import { Carousel, Slide } from 'vue-carousel';
 import FloatingLabel from 'vue-simple-floating-labels'
+import workInformations from '../Customers/WorkInformations'
 import moment from 'moment'
 import toastr from 'toastr'
 
@@ -99,7 +109,8 @@ export default {
         FloatingLabel,
         moment,
         toastr,
-        modalNewWorkXp
+        modalNewWorkXp,
+        workInformations
         //companyCard,
         //modalNewExternalCompany,
         //AssistantsPanel,
@@ -116,6 +127,8 @@ export default {
             companies:              [],
             companySel:             [],
             isNewCreditStudy:       null,
+            isWorkInformations:     false,
+            workInfoByCredStudy:    [],
             errors:                 []
         }
     },
@@ -161,7 +174,6 @@ export default {
         },
         valFirstStep : function() {
             return new Promise((resolve, reject) => {
-                console.log(this.creditStudy.customer.length)
                 this.creditStudy.customer === null || this.creditStudy.customer.length === 0 ? reject('Debe seleccionar o crear un cliente') :  resolve(true); 
                 this.err.customer= false
             })
@@ -253,9 +265,35 @@ export default {
             this.$emit('setModalNewCustomer')
         },
         onChange(){
+            this.companySel.company_id = this.companySel.company_id
             this.isNewCreditStudy = !this.isNewCreditStudy
+        },
+        closeModalNewWorkXp(){
+            this.companySel = null
+            this.isNewCreditStudy = !this.isNewCreditStudy
+        },
+        setCustomer(){
+            this.forceRerender(this.isWorkInformations)
+            if(this.creditStudy.customer){
+            this.isWorkInformations = true
+            }else{
+                this.isWorkInformations = false
+            }
+        },
+        forceRerender(module) {
+            // Remove my-component from the DOM
+            module = false;
+            // If you like promises better you can
+            // also use nextTick this way
+            this.$nextTick().then(() => {
+                // Add the component back in
+                module = true;
+            });
+        },
+        setWorkXpToCreditStudy(val) {
+            this.workInfoByCredStudy.push(val)
+            this.forceRerender(this.isWorkInformations)
         }
-        
     }
 }
 </script>

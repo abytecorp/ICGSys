@@ -5,7 +5,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="myLargeModalLabel">Datos de la nueva empresa</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <button type="button" class="close" @click="closeThisModal()"  aria-hidden="true">×</button>
                     </div>
                     <div class="modal-body">   
                     <div class="row">
@@ -70,9 +70,10 @@
                                                                         :config="{label: 'INGRESOS MENSUALES (COP) *', hasError: err.montly_income, hasClearButton: false }">
                                                                         <input name="nit" v-model="workInformation.montly_income" type="number">
                                                                     </FloatingLabel>
-                                                                    <span v-if="err.nit" class="text-danger" >{{ err.nit }}</span>
-                                                                    <span v-for="error in errors" class="text-danger" :key="error.error">{{ error.nit }}</span>
+                                                                    <span v-if="err.montly_income" class="text-danger" >{{ err.montly_income }}</span>
+                                                                    <span v-for="error in errors" class="text-danger" :key="error.error">{{ error.montly_income }}</span>
                                                         </div> 
+                                                        <!-- activity -->
                                                         <div class="form-group col-md-10 m-t-20"> 
                                                             <v-select :options="activities" v-model="workInformation.activity_id" label="activity" placeholder="seleccione actividad economica">
                                                                 <template slot="option" slot-scope="option">
@@ -92,55 +93,50 @@
                                                         <div class="form-group col-md-2 m-t-20" v-if="isNewActivity">
                                                             <a class="btn btn-outline-success" @click="storeNewActivity"><i class="fa fa-check-square-o"></i></a>
                                                         </div>
+                                                        <!-- /activity -->
+                                                        <!-- position -->
+                                                        <div class="form-group col-md-10 m-t-20"> 
+                                                            <v-select :options="positions" v-model="workInformation.position_id" label="position" placeholder="seleccione un cargo">
+                                                                <template slot="option" slot-scope="option">
+                                                                    {{ option.position }} 
+                                                                </template>
+                                                            </v-select>
+                                                            <span v-if="err.position_id" class="text-danger" >{{ err.position_id }}</span>
+                                                            <span v-for="error in errors" class="text-danger" :key="error.error">{{ error.position_id }}</span>
+                                                        </div>
+                                                        <div class="form-group col-md-2 m-t-20"> 
+                                                            <a class="btn btn-info" v-if="!isNewPosition" @click="newPosition"><i class="fa fa-plus"></i></a>
+                                                            <a class="btn btn-danger" v-if="isNewPosition" @click="newPosition"><i class="fa fa-window-close"></i></a>
+                                                        </div>
+                                                        <div class="form-group has-success col-md-10 m-t-20" id="inputSuccess2" v-if="isNewPosition">
+                                                            <input type="text" placeholder="Digite el cargo a agregar" v-model="newPositionSel.position" class="form-control form-control-success" />
+                                                        </div>
+                                                        <div class="form-group col-md-2 m-t-20" v-if="isNewPosition">
+                                                            <a class="btn btn-outline-success" @click="storeNewPosition"><i class="fa fa-check-square-o"></i></a>
+                                                        </div>
+                                                        <!-- /position -->
                                                         <div class="form-group col-md-12 m-t-20" >
                                                                 <FloatingLabel
-                                                                    :config="{label: 'Siglas de la empresa', hasError: false, hasClearButton: false }">
-                                                                    <input name="acronym" v-model="workInformation.acronym" type="text">
+                                                                    :config="{label: 'Fecha de ingreso a la empresa *', hasError: false, hasClearButton: false }">
+                                                                    <input type="date" name="date" v-model="workInformation.init_date" />
                                                                 </FloatingLabel>
+                                                                <span v-if="err.init_date" class="text-danger" >{{ err.init_date }}</span>
+                                                                <span v-for="error in errors" class="text-danger" :key="error.error">{{ error.init_date }}</span>
                                                         </div>
                                                         <div class="form-group col-md-12 m-t-20">         
-                                                                <FloatingLabel
-                                                                    :config="{label: 'Correo electronico principal (*)', hasError: err.principalMail, hasClearButton: false }">
-                                                                    <input name="email" v-model="workInformation.email" type="mail">
-                                                                </FloatingLabel>
-                                                                <span v-if="err.principalMail" class="text-danger" >{{ err.principalMail }}</span>
-                                                                <span v-for="error in errors" class="text-danger" :key="error.error">{{ error.email }}</span>
+                                                                <label for="observations">Observaciones</label>
+                                                                    <textarea class="form-control" v-model="workInformation.obs" rows="5"></textarea>
+
+                                                                    <span v-if="err.obs" class="text-danger" >{{ err.obs }}</span>
+                                                                    <span v-for="error in errors" class="text-danger" :key="error.error">{{ error.obs }}</span>
                                                         </div>
 
-                                                        <div class="form-group col-md-12 m-t-20">         
-                                                                <FloatingLabel
-                                                                    :config="{label: 'Telefono oficina principal', hasError: err.principalPhone, hasClearButton: false }">
-                                                                    <input name="phone1" v-model="workInformation.phone1" type="text">
-                                                                </FloatingLabel>
-                                                                <span v-if="err.principalPhone" class="text-danger" >{{ err.principalPhone }}</span>
-                                                        </div>
-
-                                                        <div class="form-group col-md-12 m-t-20">         
-                                                                <FloatingLabel
-                                                                    :config="{label: 'Telefono opcional', hasError: false, hasClearButton: false }">
-                                                                    <input name="phone2" v-model="workInformation.phone2" type="text">
-                                                                </FloatingLabel>
-                                                        </div>
-
-                                                        <div class="form-group col-md-12 m-t-20">         
-                                                                <FloatingLabel
-                                                                    :config="{label: 'Celular', hasError: false, hasClearButton: false }">
-                                                                    <input name="phone3" v-model="workInformation.phone3" type="text">
-                                                                </FloatingLabel>
-                                                        </div>
-
+                                                        
                                                         
 
                                                     </form>
                                                     </div>
-                                                    <div class="form-group col-md-12">
-                                                        <v-select id="eventTypeSelect" placeholder="Seleccione la ciudad" :options="activities" v-model="workInformation.activity_id"  label="city">
-                                                            <template slot="option" slot-scope="option">
-                                                                    {{ option.city }}
-                                                            </template>
-                                                        </v-select>
-                                                        <span v-for="error in errors" class="text-danger" :key="error.error">{{ error.city_id }} </span>
-                                                    </div>
+     
                                                     </div>
                                                 </div>
                                             </div>
@@ -159,8 +155,8 @@
                 <!-- Row -->
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success waves-effect" @click="storeCompany()">Aceptar</button>
-                        <button type="button" class="btn btn-danger waves-effect waves-light"  data-dismiss="modal">Cancelar</button>                 
+                        <button type="button" class="btn btn-success waves-effect" @click="testing()">Aceptar</button>
+                        <button type="button" class="btn btn-danger waves-effect waves-light"  @click="closeThisModal()">Cancelar</button>                 
                     </div>
                 </div>
                 <!-- /.modal-content -->
@@ -176,7 +172,7 @@ import AddressAutocomplete from '../Tools/Address-autocomplete'
 
 import toastr from 'toastr'
 export default {
-    props:['company_id'],
+    props:['company_id', 'customer'],
     components: {
         FloatingLabel,
         toastr
@@ -186,27 +182,39 @@ export default {
             acepted:                null,
             company:                [],
             activities:             [],
+            positions:              [],
             workInformation: {
+                customer_id:        '',
                 montly_income:      '',
-                activity_id:        ''
+                activity_id:        '',
+                company_id:         '',
+                position_id:        '',
+                init_date:          '',
+                obs:                ''
             },
             err: {
                 montly_income:      '',
-                activity_id:        ''
+                activity_id:        '',
+                position_id:        ''
             },
             classNorm:          'btn btn-secondary btn-circle',
             classDanger:        'btn btn-danger btn-circle',
             classSuccess:       'btn btn-success btn-circle',
             newActivitySel: {
-                activity:           ''
+                activity:           '',
+            },
+            newPositionSel: {
+                position:           '',
             },
             isNewActivity:          null,
+            isNewPosition:          null,
             errors:                 []
         }
     },
     created : function (){
         this.getCompanyById()
         this.getActivities()
+        this.getPositions()
     },
     mounted : function (){
         $('#newWorkXpModal').modal('show');
@@ -232,6 +240,16 @@ export default {
                 this.errors = error.response.data;
             });
         },
+        getPositions() {
+            let url = `/api/get-positions`;
+            axios.get(url).then(response =>{
+                this.positions = response.data;
+                this.errors = [];
+            }).catch(error => {
+                this.positions = [];
+                this.errors = error.response.data;
+            });
+        },
         storeNewActivity() {
             if(this.newActivitySel.activity !== ''){
             let url = `/api/store-new-activity`
@@ -248,8 +266,45 @@ export default {
                 toastr.error('Debe digitar la nueva actividad')
             }
         },
+        storeNewPosition() {
+            if(this.newPositionSel.position !== ''){
+            let url = `/api/store-new-position`
+            axios.post(url,this.newPositionSel).then(response =>{
+                this.errors = [];
+                toastr.success(`Se agrego ${response.data.position} como cargo satisfactoriamente.`)
+                this.newPositionSel = ''
+                this.getPositions()
+                this.newPosition()
+            }).catch(error => {
+                this.errors = error.response.data;
+            });
+            }else{
+                toastr.error('Debe digitar el nuevo cargo')
+            }
+        },
         newActivity(){
             this.isNewActivity = !this.isNewActivity
+        },
+        newPosition(){
+            this.isNewPosition = !this.isNewPosition
+        },
+        testing : function() {
+            this.workInformation.customer_id = this.customer.id
+            this.workInformation.company_id = this.company_id
+            this.workInformation.position_id = typeof(this.workInformation.position_id) == 'object' ? this.workInformation.position_id.id : this.workInformation.position_id;
+            console.log(this.workInformation)
+            let url = `/api/store-new-work-xp`
+            axios.post(url,this.workInformation).then(response => {
+                toastr.success(`Se agrego la experiencia laboral satisfactoriamente`)
+                this.$emit('getWorkExperiencesByCustomer')
+                this.closeThisModal()
+            }).catch(error =>{
+                this.errors = error.response.data;
+            });
+        },
+        closeThisModal : function() {
+            $('#newWorkXpModal').modal('hide');
+            this.$emit('closeModalNewWorkXp')
         }
         
     }

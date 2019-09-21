@@ -17,7 +17,7 @@ class CreateWorkInformationsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('customer_id')->unsigned();
             $table->decimal('montly_income');
-            $table->unsignedInteger('activity_id')->unsigned();
+            $table->unsignedInteger('activity_id')->unsigned()->nullable();
             $table->unsignedInteger('company_id')->unsigned();
             $table->unsignedInteger('position_id')->unsigned()->nullable();
             $table->date('init_date');

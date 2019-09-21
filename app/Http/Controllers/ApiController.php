@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateCustomerRequest;
 use App\Http\Requests\CreateCompanyRequest;
+use App\Http\Requests\CreateWorkInformationRequest;
 use App\City;
 use App\Study_credit;
 use App\Document_type;
@@ -13,6 +14,8 @@ use App\Nomenclature;
 use App\Change;
 use App\Company;
 use App\Activity;
+use App\Position;
+use App\Work_information;
 use Auth;
 use DB;
 
@@ -116,5 +119,29 @@ class ApiController extends Controller
     public function storeNewActivity(Request $request)
     {
         return $activity = Activity::create($request->all());
+    }
+    public function getPositions()
+    {
+        return $positions = Position::all();
+    }
+    public function storeNewPosition(Request $request)
+    {
+        return $position = Position::create($request->all());
+    }
+    public function storeNewWorkXp(CreateWorkInformationRequest $request)
+    {
+        $request['us_cr'] = Auth::user()->id;
+        $request['status_id'] = 1;
+        return $workXp = Work_information::create($request->all());
+    }
+    public function getWorkInformationsByCustomer($customer)
+    {
+        return $work_informations = Work_information::select('work_informations.id', 'work_informations.customer_id', 'work_informations.montly_income', 
+            'work_informations.activity_id', 'work_informations.company_id', 'work_informations.position_id', 'work_informations.init_date', 
+            'work_informations.obs', 'work_informations.status_id', 'companies.bs_name', 'customers.name', 'customers.first_last_name', 'customers.second_last_name')
+            ->where('customer_id','=',$customer)
+            ->join('customers','work_informations.customer_id', 'customers.id')
+            ->join('companies','work_informations.company_id', 'companies.id')
+            ->get();
     }
 }

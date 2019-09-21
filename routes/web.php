@@ -34,6 +34,14 @@ Route::get('/api/{company}/get-company-by-id','ApiController@getCompanyById');
 Route::post('/api/store-new-activity','ApiController@storeNewActivity');
 // get activities
 Route::get('/api/get-activities', 'ApiController@getActivities');
+// get positions
+Route::get('/api/get-positions', 'ApiController@getPositions');
+// new position
+Route::post('/api/store-new-position','ApiController@storeNewPosition');
+// new work xp
+Route::post('/api/store-new-work-xp', 'ApiController@storeNewWorkXp');
+// get work informatiopns by custyomer
+Route::get('/api/{customer}/get-work-informations-by-customer','ApiController@getWorkInformationsByCustomer');
 
 Route::get('/', function () {
     return view('auth.login');

@@ -2438,15 +2438,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_carousel__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var vue_simple_floating_labels__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-simple-floating-labels */ "./node_modules/vue-simple-floating-labels/dist/vue-simple-floating-labels.js");
 /* harmony import */ var vue_simple_floating_labels__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_simple_floating_labels__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! toastr */ "./node_modules/toastr/toastr.js");
-/* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(toastr__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _Customers_ModalNewWorkXp__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Customers/ModalNewWorkXp */ "./resources/js/components/Customers/ModalNewWorkXp.vue");
-/* harmony import */ var vue_ctk_date_time_picker__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-ctk-date-time-picker */ "./node_modules/vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.common.js");
-/* harmony import */ var vue_ctk_date_time_picker__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(vue_ctk_date_time_picker__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var vue_ctk_date_time_picker_dist_vue_ctk_date_time_picker_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css */ "./node_modules/vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css");
-/* harmony import */ var vue_ctk_date_time_picker_dist_vue_ctk_date_time_picker_css__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(vue_ctk_date_time_picker_dist_vue_ctk_date_time_picker_css__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _Customers_WorkInformations__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Customers/WorkInformations */ "./resources/js/components/Customers/WorkInformations.vue");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! toastr */ "./node_modules/toastr/toastr.js");
+/* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(toastr__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _Customers_ModalNewWorkXp__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Customers/ModalNewWorkXp */ "./resources/js/components/Customers/ModalNewWorkXp.vue");
+/* harmony import */ var vue_ctk_date_time_picker__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-ctk-date-time-picker */ "./node_modules/vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.common.js");
+/* harmony import */ var vue_ctk_date_time_picker__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(vue_ctk_date_time_picker__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var vue_ctk_date_time_picker_dist_vue_ctk_date_time_picker_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css */ "./node_modules/vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css");
+/* harmony import */ var vue_ctk_date_time_picker_dist_vue_ctk_date_time_picker_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(vue_ctk_date_time_picker_dist_vue_ctk_date_time_picker_css__WEBPACK_IMPORTED_MODULE_9__);
 var _methods;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -2526,6 +2527,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2535,7 +2545,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-Vue.component('VueCtkDateTimePicker', vue_ctk_date_time_picker__WEBPACK_IMPORTED_MODULE_7___default.a); //import companyCard from './External-inscription/Company-card'
+
+Vue.component('VueCtkDateTimePicker', vue_ctk_date_time_picker__WEBPACK_IMPORTED_MODULE_8___default.a); //import companyCard from './External-inscription/Company-card'
 //import modalNewExternalCompany from './External-inscription/Modal-new-external-company'
 //import AssistantsPanel from './External-inscription/Assistants-panel'
 
@@ -2545,9 +2556,10 @@ Vue.component('VueCtkDateTimePicker', vue_ctk_date_time_picker__WEBPACK_IMPORTED
     FormWizard: vue_form_wizard__WEBPACK_IMPORTED_MODULE_0__["FormWizard"],
     TabContent: vue_form_wizard__WEBPACK_IMPORTED_MODULE_0__["TabContent"],
     FloatingLabel: vue_simple_floating_labels__WEBPACK_IMPORTED_MODULE_3___default.a,
-    moment: moment__WEBPACK_IMPORTED_MODULE_4___default.a,
-    toastr: toastr__WEBPACK_IMPORTED_MODULE_5___default.a,
-    modalNewWorkXp: _Customers_ModalNewWorkXp__WEBPACK_IMPORTED_MODULE_6__["default"] //companyCard,
+    moment: moment__WEBPACK_IMPORTED_MODULE_5___default.a,
+    toastr: toastr__WEBPACK_IMPORTED_MODULE_6___default.a,
+    modalNewWorkXp: _Customers_ModalNewWorkXp__WEBPACK_IMPORTED_MODULE_7__["default"],
+    workInformations: _Customers_WorkInformations__WEBPACK_IMPORTED_MODULE_4__["default"] //companyCard,
     //modalNewExternalCompany,
     //AssistantsPanel,
 
@@ -2564,6 +2576,8 @@ Vue.component('VueCtkDateTimePicker', vue_ctk_date_time_picker__WEBPACK_IMPORTED
       companies: [],
       companySel: [],
       isNewCreditStudy: null,
+      isWorkInformations: false,
+      workInfoByCredStudy: [],
       errors: []
     };
   },
@@ -2611,7 +2625,6 @@ Vue.component('VueCtkDateTimePicker', vue_ctk_date_time_picker__WEBPACK_IMPORTED
       var _this4 = this;
 
       return new Promise(function (resolve, reject) {
-        console.log(_this4.creditStudy.customer.length);
         _this4.creditStudy.customer === null || _this4.creditStudy.customer.length === 0 ? reject('Debe seleccionar o crear un cliente') : resolve(true);
         _this4.err.customer = false;
       });
@@ -2707,7 +2720,31 @@ Vue.component('VueCtkDateTimePicker', vue_ctk_date_time_picker__WEBPACK_IMPORTED
     console.log('is a new!');
     this.$emit('setModalNewCustomer');
   }), _defineProperty(_methods, "onChange", function onChange() {
+    this.companySel.company_id = this.companySel.company_id;
     this.isNewCreditStudy = !this.isNewCreditStudy;
+  }), _defineProperty(_methods, "closeModalNewWorkXp", function closeModalNewWorkXp() {
+    this.companySel = null;
+    this.isNewCreditStudy = !this.isNewCreditStudy;
+  }), _defineProperty(_methods, "setCustomer", function setCustomer() {
+    this.forceRerender(this.isWorkInformations);
+
+    if (this.creditStudy.customer) {
+      this.isWorkInformations = true;
+    } else {
+      this.isWorkInformations = false;
+    }
+  }), _defineProperty(_methods, "forceRerender", function forceRerender(module) {
+    // Remove my-component from the DOM
+    module = false; // If you like promises better you can
+    // also use nextTick this way
+
+    this.$nextTick().then(function () {
+      // Add the component back in
+      module = true;
+    });
+  }), _defineProperty(_methods, "setWorkXpToCreditStudy", function setWorkXpToCreditStudy(val) {
+    this.workInfoByCredStudy.push(val);
+    this.forceRerender(this.isWorkInformations);
   }), _methods)
 });
 
@@ -3019,10 +3056,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Tools_Address_autocomplete__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Tools/Address-autocomplete */ "./resources/js/components/Tools/Address-autocomplete.vue");
 /* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! toastr */ "./node_modules/toastr/toastr.js");
 /* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(toastr__WEBPACK_IMPORTED_MODULE_2__);
-//
-//
-//
-//
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 //
 //
 //
@@ -3195,7 +3230,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['company_id'],
+  props: ['company_id', 'customer'],
   components: {
     FloatingLabel: vue_simple_floating_labels__WEBPACK_IMPORTED_MODULE_0___default.a,
     toastr: toastr__WEBPACK_IMPORTED_MODULE_2___default.a
@@ -3205,13 +3240,20 @@ __webpack_require__.r(__webpack_exports__);
       acepted: null,
       company: [],
       activities: [],
+      positions: [],
       workInformation: {
+        customer_id: '',
         montly_income: '',
-        activity_id: ''
+        activity_id: '',
+        company_id: '',
+        position_id: '',
+        init_date: '',
+        obs: ''
       },
       err: {
         montly_income: '',
-        activity_id: ''
+        activity_id: '',
+        position_id: ''
       },
       classNorm: 'btn btn-secondary btn-circle',
       classDanger: 'btn btn-danger btn-circle',
@@ -3219,13 +3261,18 @@ __webpack_require__.r(__webpack_exports__);
       newActivitySel: {
         activity: ''
       },
+      newPositionSel: {
+        position: ''
+      },
       isNewActivity: null,
+      isNewPosition: null,
       errors: []
     };
   },
   created: function created() {
     this.getCompanyById();
     this.getActivities();
+    this.getPositions();
   },
   mounted: function mounted() {
     $('#newWorkXpModal').modal('show');
@@ -3255,31 +3302,162 @@ __webpack_require__.r(__webpack_exports__);
         _this2.errors = error.response.data;
       });
     },
-    storeNewActivity: function storeNewActivity() {
+    getPositions: function getPositions() {
       var _this3 = this;
+
+      var url = "/api/get-positions";
+      axios.get(url).then(function (response) {
+        _this3.positions = response.data;
+        _this3.errors = [];
+      })["catch"](function (error) {
+        _this3.positions = [];
+        _this3.errors = error.response.data;
+      });
+    },
+    storeNewActivity: function storeNewActivity() {
+      var _this4 = this;
 
       if (this.newActivitySel.activity !== '') {
         var url = "/api/store-new-activity";
         axios.post(url, this.newActivitySel).then(function (response) {
-          _this3.errors = [];
+          _this4.errors = [];
           toastr__WEBPACK_IMPORTED_MODULE_2___default.a.success("Se agrego ".concat(response.data.activity, " como actividad satisfactoriamente."));
-          _this3.newActivitySel = '';
+          _this4.newActivitySel = '';
 
-          _this3.getActivities();
+          _this4.getActivities();
 
-          _this3.newActivity();
+          _this4.newActivity();
         })["catch"](function (error) {
-          _this3.errors = error.response.data;
+          _this4.errors = error.response.data;
         });
       } else {
         toastr__WEBPACK_IMPORTED_MODULE_2___default.a.error('Debe digitar la nueva actividad');
       }
     },
+    storeNewPosition: function storeNewPosition() {
+      var _this5 = this;
+
+      if (this.newPositionSel.position !== '') {
+        var url = "/api/store-new-position";
+        axios.post(url, this.newPositionSel).then(function (response) {
+          _this5.errors = [];
+          toastr__WEBPACK_IMPORTED_MODULE_2___default.a.success("Se agrego ".concat(response.data.position, " como cargo satisfactoriamente."));
+          _this5.newPositionSel = '';
+
+          _this5.getPositions();
+
+          _this5.newPosition();
+        })["catch"](function (error) {
+          _this5.errors = error.response.data;
+        });
+      } else {
+        toastr__WEBPACK_IMPORTED_MODULE_2___default.a.error('Debe digitar el nuevo cargo');
+      }
+    },
     newActivity: function newActivity() {
       this.isNewActivity = !this.isNewActivity;
+    },
+    newPosition: function newPosition() {
+      this.isNewPosition = !this.isNewPosition;
+    },
+    testing: function testing() {
+      var _this6 = this;
+
+      this.workInformation.customer_id = this.customer.id;
+      this.workInformation.company_id = this.company_id;
+      this.workInformation.position_id = _typeof(this.workInformation.position_id) == 'object' ? this.workInformation.position_id.id : this.workInformation.position_id;
+      console.log(this.workInformation);
+      var url = "/api/store-new-work-xp";
+      axios.post(url, this.workInformation).then(function (response) {
+        toastr__WEBPACK_IMPORTED_MODULE_2___default.a.success("Se agrego la experiencia laboral satisfactoriamente");
+
+        _this6.$emit('getWorkExperiencesByCustomer');
+
+        _this6.closeThisModal();
+      })["catch"](function (error) {
+        _this6.errors = error.response.data;
+      });
+    },
+    closeThisModal: function closeThisModal() {
+      $('#newWorkXpModal').modal('hide');
+      this.$emit('closeModalNewWorkXp');
     }
   }
 });
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Customers/WorkInformations.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Customers/WorkInformations.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+
+moment__WEBPACK_IMPORTED_MODULE_0___default.a.locale('es');
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['customer_id', 'workInfoByCredStudy'],
+  components: {
+    moment: moment__WEBPACK_IMPORTED_MODULE_0___default.a
+  },
+  data: function data() {
+    return {
+      workInformations: [],
+      classes: {
+        success: 'alert alert-success',
+        warning: 'alert alert-warning'
+      },
+      errors: []
+    };
+  },
+  created: function created() {
+    this.getWorkInformations();
+  },
+  methods: {
+    since: function since(d) {
+      return moment__WEBPACK_IMPORTED_MODULE_0___default()(d).fromNow();
+    },
+    getWorkInformations: function getWorkInformations() {
+      var _this = this;
+
+      console.log('goes');
+      var url = "/api/".concat(this.customer_id, "/get-work-informations-by-customer");
+      axios.get(url).then(function (response) {
+        _this.workInformations = response.data;
+        _this.errors = [];
+      })["catch"](function (error) {
+        _this.workInformations = [];
+        _this.errors = error.response.data;
+      });
+    },
+    addToSelected: function addToSelected(val) {
+      this.$emit('setWorkXpToCreditStudy', val);
+    },
+    inArray: function inArray(val) {
+      this.workInfoByCredStudy.map(function (num) {
+        if (num === val) {
+          return this.classes.success;
+        } else {
+          return this.classes.warning;
+        }
+      });
+    }
+  }
+}); // 200.71.37.22 200.71.37.1
+// 190.157.8.33
+// 190.157.8.1
 
 /***/ }),
 
@@ -84107,6 +84285,7 @@ var render = function() {
                                   name: "customers",
                                   label: "label"
                                 },
+                                on: { input: _vm.setCustomer },
                                 scopedSlots: _vm._u([
                                   {
                                     key: "option",
@@ -84236,7 +84415,19 @@ var render = function() {
                                 }
                               },
                               [_vm._v("Ingrese una nueva empresa")]
-                            )
+                            ),
+                            _vm._v(" "),
+                            _c("hr"),
+                            _vm._v(" "),
+                            _vm.isWorkInformations
+                              ? _c("workInformations", {
+                                  attrs: {
+                                    workInfoByCredStudy:
+                                      _vm.workInfoByCredStudy,
+                                    customer_id: _vm.creditStudy.customer.id
+                                  }
+                                })
+                              : _vm._e()
                           ],
                           1
                         )
@@ -84262,7 +84453,15 @@ var render = function() {
       _vm._v(" "),
       _vm.isNewCreditStudy && _vm.companySel.company_id
         ? _c("modalNewWorkXp", {
-            attrs: { company_id: _vm.companySel.company_id }
+            attrs: {
+              company_id: _vm.companySel.company_id,
+              customer: _vm.creditStudy.customer
+            },
+            on: {
+              closeModalNewWorkXp: _vm.closeModalNewWorkXp,
+              getWorkExperiencesByCustomer: _vm.getWorkExperiencesByCustomer,
+              setWorkXpToCreditStudy: _vm.setWorkXpToCreditStudy
+            }
           })
         : _vm._e()
     ],
@@ -85194,15 +85393,38 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog modal-lg" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(0),
+            _c("div", { staticClass: "modal-header" }, [
+              _c(
+                "h4",
+                {
+                  staticClass: "modal-title",
+                  attrs: { id: "myLargeModalLabel" }
+                },
+                [_vm._v("Datos de la nueva empresa")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "close",
+                  attrs: { type: "button", "aria-hidden": "true" },
+                  on: {
+                    click: function($event) {
+                      return _vm.closeThisModal()
+                    }
+                  }
+                },
+                [_vm._v("×")]
+              )
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
               _c("div", { staticClass: "row" }, [
-                _vm._m(1),
+                _vm._m(0),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-lg-8 col-xlg-9 col-md-7" }, [
                   _c("div", { staticClass: "card" }, [
-                    _vm._m(2),
+                    _vm._m(1),
                     _vm._v(" "),
                     _c("div", { staticClass: "tab-content" }, [
                       _c(
@@ -85215,7 +85437,7 @@ var render = function() {
                           _c("div", { staticClass: "card-body" }, [
                             _c("div", { staticClass: "profiletimeline" }, [
                               _c("div", { staticClass: "sl-item" }, [
-                                _vm._m(3),
+                                _vm._m(2),
                                 _vm._v(" "),
                                 _c("div", { staticClass: "sl-right" }, [
                                   _c("div", [
@@ -85297,7 +85519,7 @@ var render = function() {
                                                 ]
                                               ),
                                               _vm._v(" "),
-                                              _vm.err.nit
+                                              _vm.err.montly_income
                                                 ? _c(
                                                     "span",
                                                     {
@@ -85305,7 +85527,9 @@ var render = function() {
                                                     },
                                                     [
                                                       _vm._v(
-                                                        _vm._s(_vm.err.nit)
+                                                        _vm._s(
+                                                          _vm.err.montly_income
+                                                        )
                                                       )
                                                     ]
                                                   )
@@ -85320,7 +85544,13 @@ var render = function() {
                                                     key: error.error,
                                                     staticClass: "text-danger"
                                                   },
-                                                  [_vm._v(_vm._s(error.nit))]
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        error.montly_income
+                                                      )
+                                                    )
+                                                  ]
                                                 )
                                               })
                                             ],
@@ -85542,127 +85772,49 @@ var render = function() {
                                             "div",
                                             {
                                               staticClass:
-                                                "form-group col-md-12 m-t-20"
+                                                "form-group col-md-10 m-t-20"
                                             },
                                             [
-                                              _c(
-                                                "FloatingLabel",
-                                                {
-                                                  attrs: {
-                                                    config: {
-                                                      label:
-                                                        "Siglas de la empresa",
-                                                      hasError: false,
-                                                      hasClearButton: false
+                                              _c("v-select", {
+                                                attrs: {
+                                                  options: _vm.positions,
+                                                  label: "position",
+                                                  placeholder:
+                                                    "seleccione un cargo"
+                                                },
+                                                scopedSlots: _vm._u([
+                                                  {
+                                                    key: "option",
+                                                    fn: function(option) {
+                                                      return [
+                                                        _vm._v(
+                                                          "\n                                                                " +
+                                                            _vm._s(
+                                                              option.position
+                                                            ) +
+                                                            " \n                                                            "
+                                                        )
+                                                      ]
                                                     }
                                                   }
-                                                },
-                                                [
-                                                  _c("input", {
-                                                    directives: [
-                                                      {
-                                                        name: "model",
-                                                        rawName: "v-model",
-                                                        value:
-                                                          _vm.workInformation
-                                                            .acronym,
-                                                        expression:
-                                                          "workInformation.acronym"
-                                                      }
-                                                    ],
-                                                    attrs: {
-                                                      name: "acronym",
-                                                      type: "text"
-                                                    },
-                                                    domProps: {
-                                                      value:
-                                                        _vm.workInformation
-                                                          .acronym
-                                                    },
-                                                    on: {
-                                                      input: function($event) {
-                                                        if (
-                                                          $event.target
-                                                            .composing
-                                                        ) {
-                                                          return
-                                                        }
-                                                        _vm.$set(
-                                                          _vm.workInformation,
-                                                          "acronym",
-                                                          $event.target.value
-                                                        )
-                                                      }
-                                                    }
-                                                  })
-                                                ]
-                                              )
-                                            ],
-                                            1
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-12 m-t-20"
-                                            },
-                                            [
-                                              _c(
-                                                "FloatingLabel",
-                                                {
-                                                  attrs: {
-                                                    config: {
-                                                      label:
-                                                        "Correo electronico principal (*)",
-                                                      hasError:
-                                                        _vm.err.principalMail,
-                                                      hasClearButton: false
-                                                    }
-                                                  }
-                                                },
-                                                [
-                                                  _c("input", {
-                                                    directives: [
-                                                      {
-                                                        name: "model",
-                                                        rawName: "v-model",
-                                                        value:
-                                                          _vm.workInformation
-                                                            .email,
-                                                        expression:
-                                                          "workInformation.email"
-                                                      }
-                                                    ],
-                                                    attrs: {
-                                                      name: "email",
-                                                      type: "mail"
-                                                    },
-                                                    domProps: {
-                                                      value:
-                                                        _vm.workInformation
-                                                          .email
-                                                    },
-                                                    on: {
-                                                      input: function($event) {
-                                                        if (
-                                                          $event.target
-                                                            .composing
-                                                        ) {
-                                                          return
-                                                        }
-                                                        _vm.$set(
-                                                          _vm.workInformation,
-                                                          "email",
-                                                          $event.target.value
-                                                        )
-                                                      }
-                                                    }
-                                                  })
-                                                ]
-                                              ),
+                                                ]),
+                                                model: {
+                                                  value:
+                                                    _vm.workInformation
+                                                      .position_id,
+                                                  callback: function($$v) {
+                                                    _vm.$set(
+                                                      _vm.workInformation,
+                                                      "position_id",
+                                                      $$v
+                                                    )
+                                                  },
+                                                  expression:
+                                                    "workInformation.position_id"
+                                                }
+                                              }),
                                               _vm._v(" "),
-                                              _vm.err.principalMail
+                                              _vm.err.position_id
                                                 ? _c(
                                                     "span",
                                                     {
@@ -85671,7 +85823,7 @@ var render = function() {
                                                     [
                                                       _vm._v(
                                                         _vm._s(
-                                                          _vm.err.principalMail
+                                                          _vm.err.position_id
                                                         )
                                                       )
                                                     ]
@@ -85687,7 +85839,236 @@ var render = function() {
                                                     key: error.error,
                                                     staticClass: "text-danger"
                                                   },
-                                                  [_vm._v(_vm._s(error.email))]
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(error.position_id)
+                                                    )
+                                                  ]
+                                                )
+                                              })
+                                            ],
+                                            2
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "form-group col-md-2 m-t-20"
+                                            },
+                                            [
+                                              !_vm.isNewPosition
+                                                ? _c(
+                                                    "a",
+                                                    {
+                                                      staticClass:
+                                                        "btn btn-info",
+                                                      on: {
+                                                        click: _vm.newPosition
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("i", {
+                                                        staticClass:
+                                                          "fa fa-plus"
+                                                      })
+                                                    ]
+                                                  )
+                                                : _vm._e(),
+                                              _vm._v(" "),
+                                              _vm.isNewPosition
+                                                ? _c(
+                                                    "a",
+                                                    {
+                                                      staticClass:
+                                                        "btn btn-danger",
+                                                      on: {
+                                                        click: _vm.newPosition
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("i", {
+                                                        staticClass:
+                                                          "fa fa-window-close"
+                                                      })
+                                                    ]
+                                                  )
+                                                : _vm._e()
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _vm.isNewPosition
+                                            ? _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "form-group has-success col-md-10 m-t-20",
+                                                  attrs: { id: "inputSuccess2" }
+                                                },
+                                                [
+                                                  _c("input", {
+                                                    directives: [
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value:
+                                                          _vm.newPositionSel
+                                                            .position,
+                                                        expression:
+                                                          "newPositionSel.position"
+                                                      }
+                                                    ],
+                                                    staticClass:
+                                                      "form-control form-control-success",
+                                                    attrs: {
+                                                      type: "text",
+                                                      placeholder:
+                                                        "Digite el cargo a agregar"
+                                                    },
+                                                    domProps: {
+                                                      value:
+                                                        _vm.newPositionSel
+                                                          .position
+                                                    },
+                                                    on: {
+                                                      input: function($event) {
+                                                        if (
+                                                          $event.target
+                                                            .composing
+                                                        ) {
+                                                          return
+                                                        }
+                                                        _vm.$set(
+                                                          _vm.newPositionSel,
+                                                          "position",
+                                                          $event.target.value
+                                                        )
+                                                      }
+                                                    }
+                                                  })
+                                                ]
+                                              )
+                                            : _vm._e(),
+                                          _vm._v(" "),
+                                          _vm.isNewPosition
+                                            ? _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "form-group col-md-2 m-t-20"
+                                                },
+                                                [
+                                                  _c(
+                                                    "a",
+                                                    {
+                                                      staticClass:
+                                                        "btn btn-outline-success",
+                                                      on: {
+                                                        click:
+                                                          _vm.storeNewPosition
+                                                      }
+                                                    },
+                                                    [
+                                                      _c("i", {
+                                                        staticClass:
+                                                          "fa fa-check-square-o"
+                                                      })
+                                                    ]
+                                                  )
+                                                ]
+                                              )
+                                            : _vm._e(),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "form-group col-md-12 m-t-20"
+                                            },
+                                            [
+                                              _c(
+                                                "FloatingLabel",
+                                                {
+                                                  attrs: {
+                                                    config: {
+                                                      label:
+                                                        "Fecha de ingreso a la empresa *",
+                                                      hasError: false,
+                                                      hasClearButton: false
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("input", {
+                                                    directives: [
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value:
+                                                          _vm.workInformation
+                                                            .init_date,
+                                                        expression:
+                                                          "workInformation.init_date"
+                                                      }
+                                                    ],
+                                                    attrs: {
+                                                      type: "date",
+                                                      name: "date"
+                                                    },
+                                                    domProps: {
+                                                      value:
+                                                        _vm.workInformation
+                                                          .init_date
+                                                    },
+                                                    on: {
+                                                      input: function($event) {
+                                                        if (
+                                                          $event.target
+                                                            .composing
+                                                        ) {
+                                                          return
+                                                        }
+                                                        _vm.$set(
+                                                          _vm.workInformation,
+                                                          "init_date",
+                                                          $event.target.value
+                                                        )
+                                                      }
+                                                    }
+                                                  })
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _vm.err.init_date
+                                                ? _c(
+                                                    "span",
+                                                    {
+                                                      staticClass: "text-danger"
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(
+                                                          _vm.err.init_date
+                                                        )
+                                                      )
+                                                    ]
+                                                  )
+                                                : _vm._e(),
+                                              _vm._v(" "),
+                                              _vm._l(_vm.errors, function(
+                                                error
+                                              ) {
+                                                return _c(
+                                                  "span",
+                                                  {
+                                                    key: error.error,
+                                                    staticClass: "text-danger"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(error.init_date)
+                                                    )
+                                                  ]
                                                 )
                                               })
                                             ],
@@ -85702,60 +86083,46 @@ var render = function() {
                                             },
                                             [
                                               _c(
-                                                "FloatingLabel",
+                                                "label",
                                                 {
-                                                  attrs: {
-                                                    config: {
-                                                      label:
-                                                        "Telefono oficina principal",
-                                                      hasError:
-                                                        _vm.err.principalPhone,
-                                                      hasClearButton: false
-                                                    }
-                                                  }
+                                                  attrs: { for: "observations" }
                                                 },
-                                                [
-                                                  _c("input", {
-                                                    directives: [
-                                                      {
-                                                        name: "model",
-                                                        rawName: "v-model",
-                                                        value:
-                                                          _vm.workInformation
-                                                            .phone1,
-                                                        expression:
-                                                          "workInformation.phone1"
-                                                      }
-                                                    ],
-                                                    attrs: {
-                                                      name: "phone1",
-                                                      type: "text"
-                                                    },
-                                                    domProps: {
-                                                      value:
-                                                        _vm.workInformation
-                                                          .phone1
-                                                    },
-                                                    on: {
-                                                      input: function($event) {
-                                                        if (
-                                                          $event.target
-                                                            .composing
-                                                        ) {
-                                                          return
-                                                        }
-                                                        _vm.$set(
-                                                          _vm.workInformation,
-                                                          "phone1",
-                                                          $event.target.value
-                                                        )
-                                                      }
-                                                    }
-                                                  })
-                                                ]
+                                                [_vm._v("Observaciones")]
                                               ),
                                               _vm._v(" "),
-                                              _vm.err.principalPhone
+                                              _c("textarea", {
+                                                directives: [
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value:
+                                                      _vm.workInformation.obs,
+                                                    expression:
+                                                      "workInformation.obs"
+                                                  }
+                                                ],
+                                                staticClass: "form-control",
+                                                attrs: { rows: "5" },
+                                                domProps: {
+                                                  value: _vm.workInformation.obs
+                                                },
+                                                on: {
+                                                  input: function($event) {
+                                                    if (
+                                                      $event.target.composing
+                                                    ) {
+                                                      return
+                                                    }
+                                                    _vm.$set(
+                                                      _vm.workInformation,
+                                                      "obs",
+                                                      $event.target.value
+                                                    )
+                                                  }
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _vm.err.obs
                                                 ? _c(
                                                     "span",
                                                     {
@@ -85763,202 +86130,30 @@ var render = function() {
                                                     },
                                                     [
                                                       _vm._v(
-                                                        _vm._s(
-                                                          _vm.err.principalPhone
-                                                        )
+                                                        _vm._s(_vm.err.obs)
                                                       )
                                                     ]
                                                   )
-                                                : _vm._e()
+                                                : _vm._e(),
+                                              _vm._v(" "),
+                                              _vm._l(_vm.errors, function(
+                                                error
+                                              ) {
+                                                return _c(
+                                                  "span",
+                                                  {
+                                                    key: error.error,
+                                                    staticClass: "text-danger"
+                                                  },
+                                                  [_vm._v(_vm._s(error.obs))]
+                                                )
+                                              })
                                             ],
-                                            1
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-12 m-t-20"
-                                            },
-                                            [
-                                              _c(
-                                                "FloatingLabel",
-                                                {
-                                                  attrs: {
-                                                    config: {
-                                                      label:
-                                                        "Telefono opcional",
-                                                      hasError: false,
-                                                      hasClearButton: false
-                                                    }
-                                                  }
-                                                },
-                                                [
-                                                  _c("input", {
-                                                    directives: [
-                                                      {
-                                                        name: "model",
-                                                        rawName: "v-model",
-                                                        value:
-                                                          _vm.workInformation
-                                                            .phone2,
-                                                        expression:
-                                                          "workInformation.phone2"
-                                                      }
-                                                    ],
-                                                    attrs: {
-                                                      name: "phone2",
-                                                      type: "text"
-                                                    },
-                                                    domProps: {
-                                                      value:
-                                                        _vm.workInformation
-                                                          .phone2
-                                                    },
-                                                    on: {
-                                                      input: function($event) {
-                                                        if (
-                                                          $event.target
-                                                            .composing
-                                                        ) {
-                                                          return
-                                                        }
-                                                        _vm.$set(
-                                                          _vm.workInformation,
-                                                          "phone2",
-                                                          $event.target.value
-                                                        )
-                                                      }
-                                                    }
-                                                  })
-                                                ]
-                                              )
-                                            ],
-                                            1
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-12 m-t-20"
-                                            },
-                                            [
-                                              _c(
-                                                "FloatingLabel",
-                                                {
-                                                  attrs: {
-                                                    config: {
-                                                      label: "Celular",
-                                                      hasError: false,
-                                                      hasClearButton: false
-                                                    }
-                                                  }
-                                                },
-                                                [
-                                                  _c("input", {
-                                                    directives: [
-                                                      {
-                                                        name: "model",
-                                                        rawName: "v-model",
-                                                        value:
-                                                          _vm.workInformation
-                                                            .phone3,
-                                                        expression:
-                                                          "workInformation.phone3"
-                                                      }
-                                                    ],
-                                                    attrs: {
-                                                      name: "phone3",
-                                                      type: "text"
-                                                    },
-                                                    domProps: {
-                                                      value:
-                                                        _vm.workInformation
-                                                          .phone3
-                                                    },
-                                                    on: {
-                                                      input: function($event) {
-                                                        if (
-                                                          $event.target
-                                                            .composing
-                                                        ) {
-                                                          return
-                                                        }
-                                                        _vm.$set(
-                                                          _vm.workInformation,
-                                                          "phone3",
-                                                          $event.target.value
-                                                        )
-                                                      }
-                                                    }
-                                                  })
-                                                ]
-                                              )
-                                            ],
-                                            1
+                                            2
                                           )
                                         ]
                                       )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      { staticClass: "form-group col-md-12" },
-                                      [
-                                        _c("v-select", {
-                                          attrs: {
-                                            id: "eventTypeSelect",
-                                            placeholder: "Seleccione la ciudad",
-                                            options: _vm.activities,
-                                            label: "city"
-                                          },
-                                          scopedSlots: _vm._u([
-                                            {
-                                              key: "option",
-                                              fn: function(option) {
-                                                return [
-                                                  _vm._v(
-                                                    "\n                                                                " +
-                                                      _vm._s(option.city) +
-                                                      "\n                                                        "
-                                                  )
-                                                ]
-                                              }
-                                            }
-                                          ]),
-                                          model: {
-                                            value:
-                                              _vm.workInformation.activity_id,
-                                            callback: function($$v) {
-                                              _vm.$set(
-                                                _vm.workInformation,
-                                                "activity_id",
-                                                $$v
-                                              )
-                                            },
-                                            expression:
-                                              "workInformation.activity_id"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _vm._l(_vm.errors, function(error) {
-                                          return _c(
-                                            "span",
-                                            {
-                                              key: error.error,
-                                              staticClass: "text-danger"
-                                            },
-                                            [
-                                              _vm._v(
-                                                _vm._s(error.city_id) + " "
-                                              )
-                                            ]
-                                          )
-                                        })
-                                      ],
-                                      2
-                                    )
+                                    ])
                                   ])
                                 ])
                               ]),
@@ -85982,7 +86177,7 @@ var render = function() {
                   attrs: { type: "button" },
                   on: {
                     click: function($event) {
-                      return _vm.storeCompany()
+                      return _vm.testing()
                     }
                   }
                 },
@@ -85993,7 +86188,12 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-danger waves-effect waves-light",
-                  attrs: { type: "button", "data-dismiss": "modal" }
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      return _vm.closeThisModal()
+                    }
+                  }
                 },
                 [_vm._v("Cancelar")]
               )
@@ -86005,31 +86205,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c(
-        "h4",
-        { staticClass: "modal-title", attrs: { id: "myLargeModalLabel" } },
-        [_vm._v("Datos de la nueva empresa")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-hidden": "true"
-          }
-        },
-        [_vm._v("×")]
-      )
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -86068,6 +86243,56 @@ var staticRenderFns = [
     ])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Customers/WorkInformations.vue?vue&type=template&id=8f98b286&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Customers/WorkInformations.vue?vue&type=template&id=8f98b286& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    _vm._l(_vm.workInformations, function(workInformation) {
+      return _c(
+        "div",
+        { key: workInformation.id, class: _vm.inArray(workInformation.id) },
+        [
+          _c("h4", { staticClass: "text-success" }, [
+            _c("i", {
+              staticClass: "fa fa-check-circle",
+              on: {
+                click: function($event) {
+                  return _vm.addToSelected(workInformation.bs_name)
+                }
+              }
+            }),
+            _vm._v("   " + _vm._s(workInformation.bs_name))
+          ]),
+          _vm._v(" "),
+          _c("h4", [
+            _vm._v(" " + _vm._s(_vm.since(workInformation.init_date)) + " ")
+          ])
+        ]
+      )
+    }),
+    0
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -101271,6 +101496,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ModalNewWorkXp_vue_vue_type_template_id_4660d901___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ModalNewWorkXp_vue_vue_type_template_id_4660d901___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Customers/WorkInformations.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/Customers/WorkInformations.vue ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _WorkInformations_vue_vue_type_template_id_8f98b286___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./WorkInformations.vue?vue&type=template&id=8f98b286& */ "./resources/js/components/Customers/WorkInformations.vue?vue&type=template&id=8f98b286&");
+/* harmony import */ var _WorkInformations_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./WorkInformations.vue?vue&type=script&lang=js& */ "./resources/js/components/Customers/WorkInformations.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _WorkInformations_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _WorkInformations_vue_vue_type_template_id_8f98b286___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _WorkInformations_vue_vue_type_template_id_8f98b286___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Customers/WorkInformations.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Customers/WorkInformations.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/Customers/WorkInformations.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_WorkInformations_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./WorkInformations.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Customers/WorkInformations.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_WorkInformations_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Customers/WorkInformations.vue?vue&type=template&id=8f98b286&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/Customers/WorkInformations.vue?vue&type=template&id=8f98b286& ***!
+  \***********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WorkInformations_vue_vue_type_template_id_8f98b286___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./WorkInformations.vue?vue&type=template&id=8f98b286& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Customers/WorkInformations.vue?vue&type=template&id=8f98b286&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WorkInformations_vue_vue_type_template_id_8f98b286___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WorkInformations_vue_vue_type_template_id_8f98b286___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
