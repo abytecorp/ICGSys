@@ -2536,6 +2536,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -2743,8 +2744,19 @@ Vue.component('VueCtkDateTimePicker', vue_ctk_date_time_picker__WEBPACK_IMPORTED
       module = true;
     });
   }), _defineProperty(_methods, "setWorkXpToCreditStudy", function setWorkXpToCreditStudy(val) {
+    console.log('this is teh value', val);
     this.workInfoByCredStudy.push(val);
     this.forceRerender(this.isWorkInformations);
+  }), _defineProperty(_methods, "delWorkXpToCreditStudy", function delWorkXpToCreditStudy(val) {
+    var index = this.workInfoByCredStudy.indexOf(val);
+    console.log(index);
+  }), _defineProperty(_methods, "getWorkExperiencesByCustomer", function getWorkExperiencesByCustomer() {
+    var _this9 = this;
+
+    this.isWorkInformations = false;
+    this.$nextTick().then(function () {
+      _this9.isWorkInformations = true;
+    });
   }), _methods)
 });
 
@@ -3244,7 +3256,6 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       workInformation: {
         customer_id: '',
         montly_income: '',
-        activity_id: '',
         company_id: '',
         position_id: '',
         init_date: '',
@@ -3445,19 +3456,21 @@ moment__WEBPACK_IMPORTED_MODULE_0___default.a.locale('es');
     addToSelected: function addToSelected(val) {
       this.$emit('setWorkXpToCreditStudy', val);
     },
+    delToSelected: function delToSelected(val) {
+      this.$emit('delWorkXpToCreditStudy', val);
+    },
     inArray: function inArray(val) {
       this.workInfoByCredStudy.map(function (num) {
-        if (num === val) {
-          return this.classes.success;
+        if (num == val) {
+          return true;
         } else {
-          return this.classes.warning;
+          return false;
         }
       });
-    }
+    },
+    knowIndex: function knowIndex() {}
   }
-}); // 200.71.37.22 200.71.37.1
-// 190.157.8.33
-// 190.157.8.1
+}); // 2346524 numero de visita radicado 736437190
 
 /***/ }),
 
@@ -84425,6 +84438,12 @@ var render = function() {
                                     workInfoByCredStudy:
                                       _vm.workInfoByCredStudy,
                                     customer_id: _vm.creditStudy.customer.id
+                                  },
+                                  on: {
+                                    setWorkXpToCreditStudy:
+                                      _vm.setWorkXpToCreditStudy,
+                                    delWorkXpToCreditStudy:
+                                      _vm.delWorkXpToCreditStudy
                                   }
                                 })
                               : _vm._e()
@@ -84459,8 +84478,7 @@ var render = function() {
             },
             on: {
               closeModalNewWorkXp: _vm.closeModalNewWorkXp,
-              getWorkExperiencesByCustomer: _vm.getWorkExperiencesByCustomer,
-              setWorkXpToCreditStudy: _vm.setWorkXpToCreditStudy
+              getWorkExperiencesByCustomer: _vm.getWorkExperiencesByCustomer
             }
           })
         : _vm._e()
@@ -85566,217 +85584,6 @@ var render = function() {
                                             [
                                               _c("v-select", {
                                                 attrs: {
-                                                  options: _vm.activities,
-                                                  label: "activity",
-                                                  placeholder:
-                                                    "seleccione actividad economica"
-                                                },
-                                                scopedSlots: _vm._u([
-                                                  {
-                                                    key: "option",
-                                                    fn: function(option) {
-                                                      return [
-                                                        _vm._v(
-                                                          "\n                                                                " +
-                                                            _vm._s(
-                                                              option.activity
-                                                            ) +
-                                                            " \n                                                            "
-                                                        )
-                                                      ]
-                                                    }
-                                                  }
-                                                ]),
-                                                model: {
-                                                  value:
-                                                    _vm.workInformation
-                                                      .activity_id,
-                                                  callback: function($$v) {
-                                                    _vm.$set(
-                                                      _vm.workInformation,
-                                                      "activity_id",
-                                                      $$v
-                                                    )
-                                                  },
-                                                  expression:
-                                                    "workInformation.activity_id"
-                                                }
-                                              }),
-                                              _vm._v(" "),
-                                              _vm.err.activity_id
-                                                ? _c(
-                                                    "span",
-                                                    {
-                                                      staticClass: "text-danger"
-                                                    },
-                                                    [
-                                                      _vm._v(
-                                                        _vm._s(
-                                                          _vm.err.activity_id
-                                                        )
-                                                      )
-                                                    ]
-                                                  )
-                                                : _vm._e(),
-                                              _vm._v(" "),
-                                              _vm._l(_vm.errors, function(
-                                                error
-                                              ) {
-                                                return _c(
-                                                  "span",
-                                                  {
-                                                    key: error.error,
-                                                    staticClass: "text-danger"
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      _vm._s(error.activity_id)
-                                                    )
-                                                  ]
-                                                )
-                                              })
-                                            ],
-                                            2
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-2 m-t-20"
-                                            },
-                                            [
-                                              !_vm.isNewActivity
-                                                ? _c(
-                                                    "a",
-                                                    {
-                                                      staticClass:
-                                                        "btn btn-info",
-                                                      on: {
-                                                        click: _vm.newActivity
-                                                      }
-                                                    },
-                                                    [
-                                                      _c("i", {
-                                                        staticClass:
-                                                          "fa fa-plus"
-                                                      })
-                                                    ]
-                                                  )
-                                                : _vm._e(),
-                                              _vm._v(" "),
-                                              _vm.isNewActivity
-                                                ? _c(
-                                                    "a",
-                                                    {
-                                                      staticClass:
-                                                        "btn btn-danger",
-                                                      on: {
-                                                        click: _vm.newActivity
-                                                      }
-                                                    },
-                                                    [
-                                                      _c("i", {
-                                                        staticClass:
-                                                          "fa fa-window-close"
-                                                      })
-                                                    ]
-                                                  )
-                                                : _vm._e()
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _vm.isNewActivity
-                                            ? _c(
-                                                "div",
-                                                {
-                                                  staticClass:
-                                                    "form-group has-success col-md-10 m-t-20",
-                                                  attrs: { id: "inputSuccess1" }
-                                                },
-                                                [
-                                                  _c("input", {
-                                                    directives: [
-                                                      {
-                                                        name: "model",
-                                                        rawName: "v-model",
-                                                        value:
-                                                          _vm.newActivitySel
-                                                            .activity,
-                                                        expression:
-                                                          "newActivitySel.activity"
-                                                      }
-                                                    ],
-                                                    staticClass:
-                                                      "form-control form-control-success",
-                                                    attrs: {
-                                                      type: "text",
-                                                      placeholder:
-                                                        "Digite la actividad a agregar"
-                                                    },
-                                                    domProps: {
-                                                      value:
-                                                        _vm.newActivitySel
-                                                          .activity
-                                                    },
-                                                    on: {
-                                                      input: function($event) {
-                                                        if (
-                                                          $event.target
-                                                            .composing
-                                                        ) {
-                                                          return
-                                                        }
-                                                        _vm.$set(
-                                                          _vm.newActivitySel,
-                                                          "activity",
-                                                          $event.target.value
-                                                        )
-                                                      }
-                                                    }
-                                                  })
-                                                ]
-                                              )
-                                            : _vm._e(),
-                                          _vm._v(" "),
-                                          _vm.isNewActivity
-                                            ? _c(
-                                                "div",
-                                                {
-                                                  staticClass:
-                                                    "form-group col-md-2 m-t-20"
-                                                },
-                                                [
-                                                  _c(
-                                                    "a",
-                                                    {
-                                                      staticClass:
-                                                        "btn btn-outline-success",
-                                                      on: {
-                                                        click:
-                                                          _vm.storeNewActivity
-                                                      }
-                                                    },
-                                                    [
-                                                      _c("i", {
-                                                        staticClass:
-                                                          "fa fa-check-square-o"
-                                                      })
-                                                    ]
-                                                  )
-                                                ]
-                                              )
-                                            : _vm._e(),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-10 m-t-20"
-                                            },
-                                            [
-                                              _c("v-select", {
-                                                attrs: {
                                                   options: _vm.positions,
                                                   label: "position",
                                                   placeholder:
@@ -86269,18 +86076,34 @@ var render = function() {
     _vm._l(_vm.workInformations, function(workInformation) {
       return _c(
         "div",
-        { key: workInformation.id, class: _vm.inArray(workInformation.id) },
+        {
+          key: workInformation.id,
+          class: [
+            _vm.inArray(workInformation.id)
+              ? _vm.classes.success
+              : _vm.classes.warning
+          ]
+        },
         [
           _c("h4", { staticClass: "text-success" }, [
-            _c("i", {
-              staticClass: "fa fa-check-circle",
-              on: {
-                click: function($event) {
-                  return _vm.addToSelected(workInformation.bs_name)
-                }
-              }
-            }),
-            _vm._v("   " + _vm._s(workInformation.bs_name))
+            _vm.knowIndex(workInformation.id) !== -1
+              ? _c("i", {
+                  staticClass: "fa fa-check-circle",
+                  on: {
+                    click: function($event) {
+                      return _vm.addToSelected(workInformation.id)
+                    }
+                  }
+                })
+              : _c("i", {
+                  staticClass: "fa fa-window-close",
+                  on: {
+                    click: function($event) {
+                      return _vm.delToSelected(workInformation.id)
+                    }
+                  }
+                }),
+            _vm._v("  " + _vm._s(workInformation.bs_name))
           ]),
           _vm._v(" "),
           _c("h4", [

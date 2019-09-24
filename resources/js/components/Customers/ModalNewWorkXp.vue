@@ -74,7 +74,7 @@
                                                                     <span v-for="error in errors" class="text-danger" :key="error.error">{{ error.montly_income }}</span>
                                                         </div> 
                                                         <!-- activity -->
-                                                        <div class="form-group col-md-10 m-t-20"> 
+                                                        <!-- <div class="form-group col-md-10 m-t-20"> 
                                                             <v-select :options="activities" v-model="workInformation.activity_id" label="activity" placeholder="seleccione actividad economica">
                                                                 <template slot="option" slot-scope="option">
                                                                     {{ option.activity }} 
@@ -92,7 +92,7 @@
                                                         </div>
                                                         <div class="form-group col-md-2 m-t-20" v-if="isNewActivity">
                                                             <a class="btn btn-outline-success" @click="storeNewActivity"><i class="fa fa-check-square-o"></i></a>
-                                                        </div>
+                                                        </div> -->
                                                         <!-- /activity -->
                                                         <!-- position -->
                                                         <div class="form-group col-md-10 m-t-20"> 
@@ -186,7 +186,6 @@ export default {
             workInformation: {
                 customer_id:        '',
                 montly_income:      '',
-                activity_id:        '',
                 company_id:         '',
                 position_id:        '',
                 init_date:          '',

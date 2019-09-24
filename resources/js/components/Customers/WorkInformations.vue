@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div v-for="workInformation in workInformations"  :key="workInformation.id" :class="inArray(workInformation.id)">
-            <h4 class="text-success"><i class="fa fa-check-circle" @click="addToSelected(workInformation.bs_name)"></i>   {{ workInformation.bs_name }}</h4> <h4> {{ since(workInformation.init_date) }} </h4>
+        <div v-for="workInformation in workInformations"  :key="workInformation.id" :class="[ inArray(workInformation.id) ? classes.success : classes.warning]">
+            <h4 class="text-success"><i v-if="knowIndex(workInformation.id)!==-1" class="fa fa-check-circle" @click="addToSelected(workInformation.id)"></i>  <i v-else class="fa fa-window-close" @click="delToSelected(workInformation.id)"></i>  {{ workInformation.bs_name }}</h4> <h4> {{ since(workInformation.init_date) }} </h4>
         </div>    
     </div>
 </template>
@@ -45,23 +45,24 @@ export default {
         addToSelected(val){
             this.$emit('setWorkXpToCreditStudy',val)
         },
+        delToSelected(val){
+            this.$emit('delWorkXpToCreditStudy',val)
+        },
         inArray(val){
             this.workInfoByCredStudy.map(function(num) {
-                if(num === val){
-                    return this.classes.success
+                if(num == val){
+                    return true
                 }else{
-                    return this.classes.warning
+                    return false
                 }
             });
+        },
+        knowIndex(){
+
         }
     }
 
 }
-// 200.71.37.22 200.71.37.1
-// 190.157.8.33
-// 190.157.8.1
-
-
-
+// 2346524 numero de visita radicado 736437190
 </script>
 

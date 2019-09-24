@@ -57,7 +57,9 @@
                             <hr>
                             <workInformations v-if="isWorkInformations"
                                 :workInfoByCredStudy="workInfoByCredStudy"
-                                :customer_id="creditStudy.customer.id">
+                                :customer_id="creditStudy.customer.id"
+                                @setWorkXpToCreditStudy="setWorkXpToCreditStudy"
+                                @delWorkXpToCreditStudy="delWorkXpToCreditStudy">
                             </workInformations>
                         </div>
                     </div>
@@ -77,8 +79,7 @@
         :company_id="companySel.company_id"
         :customer="creditStudy.customer"
         @closeModalNewWorkXp="closeModalNewWorkXp"
-        @getWorkExperiencesByCustomer="getWorkExperiencesByCustomer"
-        @setWorkXpToCreditStudy="setWorkXpToCreditStudy">
+        @getWorkExperiencesByCustomer="getWorkExperiencesByCustomer">
     </modalNewWorkXp>
     </div>
 </template>
@@ -291,8 +292,19 @@ export default {
             });
         },
         setWorkXpToCreditStudy(val) {
+            console.log('this is teh value', val)
             this.workInfoByCredStudy.push(val)
             this.forceRerender(this.isWorkInformations)
+        },
+        delWorkXpToCreditStudy(val) {
+            let index = this.workInfoByCredStudy.indexOf(val)
+            console.log(index)
+        },
+        getWorkExperiencesByCustomer(){
+            this.isWorkInformations = false;
+            this.$nextTick().then(() => {
+                this.isWorkInformations = true;
+            });
         }
     }
 }
