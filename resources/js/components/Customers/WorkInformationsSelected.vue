@@ -1,10 +1,8 @@
 <template>
     <div>
-        <div v-for="workInformation in workInformations"  :key="workInformation.id" :class="[ knowIndex(workInformation.id) ? classes.warning : classes.success]">
+        <div v-for="workInformation in workInformations"  :key="workInformation.id" :class="classes.info">
             <h4 class="text-success"><i  class="fa fa-check-circle" ></i> {{ workInformation.bs_name }}</h4> <h4> {{ since(workInformation.init_date) }} </h4>
-            <button class="btn btn-info" @click="viewInfo(workInformation.id)"><i class="fa fa-bars"></i> Ver info</button>
-            <button class="btn btn-outline-success" v-if="knowIndex(workInformation.id)" @click="addToSelected(workInformation.id)">Agregar <i class="fa fa-plus" ></i></button>
-            <button class="btn btn-outline-danger" v-else @click="deleteToSelected(workInformation.id)">Eliminar <i class="fa fa-times" ></i></button>
+
         </div>
         <modalEditWorkXp v-if="isModalEditWorkXp" :work_infomation_id="idWorkXpSel"></modalEditWorkXp>    
     </div>
@@ -16,7 +14,7 @@ moment.locale('es');
 import modalEditWorkXp from '../Customers/ModalEditWorkXp'
 
 export default {
-    props: ['customer_id','workInfoByCredStudy'],
+    props: ['workInfoByCredStudy'],
     components: {
         moment,
         modalEditWorkXp
@@ -26,6 +24,7 @@ export default {
             workInformations:       [],
             classes: {
                 success:             'alert alert-success',
+                info:             'alert alert-info',
                 warning:            'alert alert-warning'
             },
             isModalEditWorkXp:      false,
@@ -41,15 +40,18 @@ export default {
             return moment(d).fromNow();
         },
         getWorkInformations : function() {
-            console.log('goes')
-            let url = `/api/${this.customer_id}/get-work-informations-by-customer`
-            axios.get(url).then(response =>{
-                this.workInformations = response.data;
-                this.errors = [];
-            }).catch(error => {
-                this.workInformations = [];
-                this.errors = error.response.data;
-            });
+            this.workInfoByCredStudy.map( (workInfo) => {
+                //console.log(workInfo)
+                let url = `/api/${workInfo}/get-work-information-by-id`
+                axios.get(url).then(response =>{
+                    this.workInformations.push(response.data);
+                    this.errors = [];
+                }).catch(error => {
+                    this.workInformations = [];
+                    this.errors = error.response.data;
+                });
+            })
+
         },
         addToSelected(val){
             this.$emit('setWorkXpToCreditStudy',val)

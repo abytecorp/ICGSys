@@ -12,15 +12,16 @@
                     <div class="card-body">
                     <h4>Tareas Comunes</h4>
                         <button class="btn btn-success" v-on:click="setModalNewCustomer()"><i class="fa fa-address-card"></i> Ingresar un nuevo cliente</button>
-                        <button class="btn btn-success" v-on:click="setModalNewCustomer()"><i class="fa fa-address-card"></i> Nueva Empresa</button>
-                        <button class="btn btn-success" v-on:click="setNewCreditStudy()"><i class="fa fa-address-card"></i> Iniciar Estudio de credito</button>
+                        <button class="btn btn-info" v-on:click="setModalNewCustomer()"><i class="fa fa-building"></i> Nueva Empresa</button>
+                        <button class="btn btn-secondary" v-on:click="setNewCreditStudy()"><i class="fa fa-archive"></i> Iniciar Estudio de credito</button>
                     </div>
                 </div>
 
         </div>
         <newCreditStudy v-if="isNewCreditStudy"
             @setModalNewCustomer="setModalNewCustomer"
-            @setModalNewCompany="setModalNewCompany">
+            @setModalNewCompany="setModalNewCompany"
+            @endNewCreditStudy="endNewCreditStudy">
         </newCreditStudy>
         <div class="row">
             <!-- Column -->
@@ -28,10 +29,13 @@
                 <div class="card bg-cyan text-white">
                     <div class="card-body ">
                         <div v-if="stCreditsByUser === [] || stCreditsByUser === null">
-                            <button class="btn btn-success" v-on:click="setNewCreditStudy()"><i class="fa fa-address-card"></i> Iniciar Estudio de credito</button>
+                            <button class="btn btn-secondary" v-on:click="setNewCreditStudy()"><i class="fa fa-building"></i> Iniciar Estudio de credito</button>
                         </div>
                         <div v-else>
-                        <studyCreditsByUser ></studyCreditsByUser>
+                            <div v-for="stCreditByUser in stCreditsByUser"  :key="stCreditByUser.id" class="alert alert-info">
+                                <h4 class="text-success"><i  class="fa fa-bank" ></i> {{ since(stCreditByUser.created_at) }}</h4> 
+                            </div>
+                        <!-- <studyCreditsByUser ></studyCreditsByUser> -->
                         </div>
                     </div>
                 </div>
@@ -53,6 +57,10 @@ import modalNewCustomer from '../Customers/ModalNewCustomer'
 import studyCreditsByUser from './StudyCreditsByUser'
 import newCreditStudy from './NewCreditStudy'
 import modalNewCompany from '../Companies/ModalNewCompany'
+
+import moment from 'moment'
+moment.locale('es');
+
 export default {
     props:['user'],
     components: {
@@ -60,7 +68,8 @@ export default {
         modalNewCustomer,
         modalNewCompany,
         studyCreditsByUser,
-        newCreditStudy
+        newCreditStudy,
+        moment
     },
     data () {
         return {
@@ -73,6 +82,7 @@ export default {
     },
     created : function() {
         //this.getCities();
+        this.getStudyCreditsByUser()
     },
     mounted : function(){
     },
@@ -102,6 +112,13 @@ export default {
                 this.errors = error.response.data;
             });
         },
+        endNewCreditStudy() {
+            this.getStudyCreditsByUser()
+            this.isNewCreditStudy = false
+        },
+        since(d){
+            return moment(d).fromNow();
+        }
     }
 }
 </script>

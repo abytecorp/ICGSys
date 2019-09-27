@@ -16,6 +16,7 @@ use App\Company;
 use App\Activity;
 use App\Position;
 use App\Work_information;
+use App\Work_exp_by_cre_study;
 use Auth;
 use DB;
 
@@ -43,8 +44,11 @@ class ApiController extends Controller
     public function getCustomers()
     {
         return $customers = Customer::select(DB::raw('CONCAT(IFNULL(customers.name,"")," ",IFNULL(customers.first_last_name,"")," ( ",IFNULL(customers.idn,"")," ) ") AS label'),
-        'id', 'document_type_id', 'idn', 'name', 'first_last_name', 'second_last_name', 'birth_date', 'born_city', 'address', 'address_city', 'neighborhood', 'cellphone', 'phone', 'mail', 'us_cr')
-        ->get();
+        'customers.id', 'customers.document_type_id', 'customers.idn', 'customers.name', 'customers.first_last_name', 'customers.second_last_name', 'customers.birth_date',
+        'customers.born_city', 'customers.address', 'customers.address_city', 'customers.neighborhood', 'customers.cellphone', 'customers.phone',
+        'customers.mail', 'customers.us_cr', 'cities.city')
+            ->join('cities','customers.born_city', 'cities.id')
+            ->get();
     }
     public function getCompaniesApi()
     {
@@ -143,5 +147,25 @@ class ApiController extends Controller
             ->join('customers','work_informations.customer_id', 'customers.id')
             ->join('companies','work_informations.company_id', 'companies.id')
             ->get();
+    }
+    public function getWorkInformationById($work_information)
+    {
+        return $work_information_s = Work_information::select('work_informations.id', 'work_informations.customer_id', 'work_informations.montly_income', 
+        'work_informations.activity_id', 'work_informations.company_id', 'work_informations.position_id', 'work_informations.init_date', 
+        'work_informations.obs', 'work_informations.status_id', 'companies.bs_name', 'customers.name', 'customers.first_last_name', 'customers.second_last_name')
+            ->where('work_informations.id','=',$work_information)
+            ->join('customers','work_informations.customer_id', 'customers.id')
+            ->join('companies','work_informations.company_id', 'companies.id')
+            ->first();
+    }
+    public function storeCreditStudy(Request $request)
+    {
+        $request['us_cr'] = Auth::user()->id;
+        return $study_credit = Study_credit::create($request->all());
+    }
+    public function storeWorkExpByCreditStudy(Request $request)
+    {
+        $request['us_cr'] = Auth::user()->id;
+        return $work_exp_by_cre_study = Work_exp_by_cre_study::create($request->all());
     }
 }

@@ -42,6 +42,12 @@ Route::post('/api/store-new-position','ApiController@storeNewPosition');
 Route::post('/api/store-new-work-xp', 'ApiController@storeNewWorkXp');
 // get work informatiopns by custyomer
 Route::get('/api/{customer}/get-work-informations-by-customer','ApiController@getWorkInformationsByCustomer');
+// get work information by id
+Route::get('/api/{work_information}/get-work-information-by-id','ApiController@getWorkInformationById');
+//store credit study
+Route::post('/api/store-credit-study','ApiController@storeCreditStudy');
+///api/store-work-exp-by-credit-study
+Route::post('/api/store-work-exp-by-credit-study', 'ApiController@storeWorkExpByCreditStudy');
 
 Route::get('/', function () {
     return view('auth.login');
@@ -52,3 +58,25 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('inicio');
 
 Route::get('/customers','CustomersController@index')->name('customers.index');
+
+            //Users
+    Route::post('users/store', 'UserController@store')->name('users.store')
+            ->middleware('permission_sh:users.create');
+
+    Route::get('users', 'UserController@index')->name('users.index')
+            ->middleware('permission_sh:users.index');
+
+    Route::get('users/create', 'UserController@create')->name('users.create')
+            ->middleware('permission_sh:users.create');
+
+    Route::put('users/{user}', 'UserController@update')->name('users.update')
+            ->middleware('permission_sh:users.edit');
+
+    Route::get('users/{user}', 'UserController@show')->name('users.show')
+            ->middleware('permission_sh:users.show');
+
+    Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit')
+            ->middleware('permission_sh:users.edit');
+    
+    Route::put('/estado-usuario/{id}/{st}', 'UserController@estadoUsuario')->name('users.status')
+            ->middleware('permission_sh:users.status');

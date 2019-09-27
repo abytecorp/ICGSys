@@ -46,12 +46,12 @@
                     <div class="card-body">
                         <div class="col-md-12">
                             <h6 class="text-muted" for=""> Seleccione la empresa donde trabaja(*)</h6>
-                            <v-select :options="companies" v-model="companySel" placeholder="Digite el nombre del cliente o su numero de identificación" @input="onChange">
+                            <v-select :options="companies" v-model="companySel" placeholder="Digite el nombre de la empresa o el nit" @input="onChange">
                                 <template slot="option" slot-scope="option">
                                     {{ option.label }} 
                                 </template>
                             </v-select>
-                            <span v-if="err.customer" class="text-danger">{{ err.customer }}</span>
+                            <span v-if="err.workXp" class="text-danger">{{ err.workXp }}</span>
                             <hr>
                             <button class="btn waves-effect waves-light btn-xs btn-info" @click="setModalNewCompany()">Ingrese una nueva empresa</button>
                             <hr>
@@ -67,9 +67,24 @@
                 <!-- Card -->
 
     </tab-content>
-    <tab-content title="Asistentes"
-        icon="fa fa-users"
-        :before-change="valFourthStep">
+    <tab-content title="Validar Informacion"
+        icon="fa fa-check-square-o"
+        :before-change="valThirdStep">
+            <div v-if="creditStudy.customer !== ''" class="d-flex no-block comment-row">
+                <div class="comment-text w-100">
+                    <h5><strong>Nombre: </strong>{{ creditStudy.customer.name }} {{ creditStudy.customer.first_last_name }} {{ creditStudy.customer.second_last_name }}</h5>
+                    <p><strong>Fecha de nacimiento:</strong> {{ since2(creditStudy.customer.birth_date) }} en {{ creditStudy.customer.city }}</p>
+                    <p><strong>Direccion:</strong> {{ creditStudy.customer.address }} en {{ creditStudy.customer.city }}</p>
+                    <p><strong>Barrio: </strong> {{ creditStudy.customer.neighborhood  }}</p>
+                    <p><strong>Celular:</strong>{{ creditStudy.customer.cellphone }}</p>
+                    <p><strong>Telefono:</strong>{{ creditStudy.customer.phone }}</p>
+                    <p><strong>Correo:</strong>{{ creditStudy.customer.mail }}</p>
+                </div>
+
+            </div>
+                <workInformationsSelected v-if="isWorkInformationSelected"
+                                :workInfoByCredStudy="workInfoByCredStudy">
+                </workInformationsSelected>
     </tab-content>
 </form-wizard>
             </div>
@@ -89,6 +104,8 @@ import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 import { Carousel, Slide } from 'vue-carousel';
 import FloatingLabel from 'vue-simple-floating-labels'
 import workInformations from '../Customers/WorkInformations'
+import workInformationsSelected from '../Customers/WorkInformationsSelected'
+
 import moment from 'moment'
 import toastr from 'toastr'
 
@@ -111,7 +128,8 @@ export default {
         moment,
         toastr,
         modalNewWorkXp,
-        workInformations
+        workInformations,
+        workInformationsSelected
         //companyCard,
         //modalNewExternalCompany,
         //AssistantsPanel,
@@ -122,7 +140,8 @@ export default {
                 customer:           [],
             },
             err:    {
-               customer:    ''
+               customer:    '',
+               workXp:      ''
             },
             customers:              [],
             companies:              [],
@@ -130,6 +149,7 @@ export default {
             isNewCreditStudy:       null,
             isWorkInformations:     false,
             workInfoByCredStudy:    [],
+            isWorkInformationSelected:   null,
             errors:                 []
         }
     },
@@ -164,8 +184,49 @@ export default {
         setAcept (val){
             this.isAcepted = val
         },
-        onComplete() {
-           
+        async storeCreditStudy() {
+            return new Promise((resolve, reject) => {
+                let credit_study = {}
+                credit_study.customer_id = this.creditStudy.customer.id
+                credit_study.st_cre_state_id = 1
+                console.log(credit_study)
+                let url = `/api/store-credit-study`
+                axios.post(url, credit_study).then(response =>{
+                    resolve(response.data.id)
+                }).catch(error => {
+                    this.errors = error.response.data;
+                    reject(error.response.data)
+                });
+            })
+        },
+        async storeWorkExpByCreStudies(study_credit_id, work_information_id) {
+            return new Promise((resolve, reject) => {
+            let work_exp_by_cre_study = {}
+                work_exp_by_cre_study.study_credit_id = study_credit_id
+                work_exp_by_cre_study.work_information_id = work_information_id
+                work_exp_by_cre_study.status_id = 1
+                console.log(work_exp_by_cre_study)
+                let url = `/api/store-work-exp-by-credit-study`
+                axios.post(url, work_exp_by_cre_study).then(response =>{
+                    resolve(response.data.id)
+                }).catch(error => {
+                    this.errors = error.response.data;
+                    reject(error.response.data)
+                });
+            })
+        },
+        async onComplete() {
+            await this.storeCreditStudy().then((id) =>{
+                this.workInfoByCredStudy.forEach(async (work_info) => {
+                console.log(work_info)
+                    await this.storeWorkExpByCreStudies(id, work_info).then(() => {
+                    })
+                });
+                toastr.success(`Ha registrado un nuevo estudio de credito exitosamente!`)
+            }).catch(error =>{
+                toastr.error(`ocurrio un error ${error}`)
+            })
+            this.$emit('endNewCreditStudy')
         },
         handleValidation(){
 
@@ -179,63 +240,23 @@ export default {
                 this.err.customer= false
             })
         },
-        setBillOrderDate() {
-            if(this.record.bill_order_date){
-                this.err.bill_order_date = '';
-                return true
-            }else{
-                this.err.bill_order_date = 'Debe seleccionar la fecha cuando recibira la factura';
-                return false
-            }
-        },
-        setPayWay() {
-        if(this.record.pay_way){
-                this.err.pay_way = '';
-                return true
-            }else{
-                this.err.pay_way = 'Debe seleccionar elmetodo de pago!';
-                return false
-            }
-        },
         valSecondStep : function() {
             this.getCompanies();
+            this.isWorkInformationSelected = true
             return new Promise((resolve, reject) => {
-                !this.record.is_bill_order ? resolve(true) : !this.record.bill_order_date ? reject('Debe seleccionar la fecha cuando desea recibir la factura') : 
-                !this.record.pay_way  ? reject('Debe establecer el metodo de pago') : resolve(true); this.err.bill_order_date= false ; this.err.pay_way = false
+                this.workInfoByCredStudy.length > 0 ? resolve(true) :  reject('Debe crear y seleccionar por lo menos una experiencia laboral') 
             })
         },
         valThirdStep(){
             return new Promise((resolve, reject) => {
-                !this.record.company_id ? reject('Debe seleccionar o crear la empresa!') : 
-                resolve(true); this.err.company_id= false ; this.err.company_id = false
-            })
-        },
-        valFourthStep(){
-            return new Promise((resolve, reject) => {
-                this.record.isSus.length == 0 ? reject('Debe inscribir al menos un asistente!') : 
-                resolve(true); this.err.isSus = false ; this.err.isSus = false
+                resolve(true)
             })
         },
         handleErrorMessage : function(errMsg) {
             if(errMsg){
             errMsg.includes('cliente') ? this.err.customer = errMsg : this.err.customer = null
+            errMsg.includes('experiencia laboral') ? this.err.workXp = errMsg : this.err.workXp = null
             }
-        },
-        valMailFormat : function(){
-            let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            //console.log(re.test(String(this.company.email).toLowerCase()))
-            if(!re.test(String(this.record.enroll_email).toLowerCase()) && this.record.enroll_email){
-                this.mailInError = true
-                this.err.enroll_email = 'Debe registrar un correo con el formato correcto >>ejemplo@empresa.com<<'
-                return false
-                }else{
-                    this.err.enroll_email = ''
-                    this.mailInError = false
-                    return true
-                   }
-        },
-        on(value) {
-            this.record.is_bill_order = value;
         },
         setModalNewCompany(){
             this.$emit('setModalNewCompany')
@@ -298,13 +319,17 @@ export default {
         },
         delWorkXpToCreditStudy(val) {
             let index = this.workInfoByCredStudy.indexOf(val)
-            console.log(index)
+            this.workInfoByCredStudy.splice(index, 1)
+            //console.log(index)
         },
         getWorkExperiencesByCustomer(){
             this.isWorkInformations = false;
             this.$nextTick().then(() => {
                 this.isWorkInformations = true;
             });
+        },
+        since2(d){
+            return moment(d).format('MMMM Do YYYY')
         }
     }
 }

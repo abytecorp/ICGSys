@@ -336,6 +336,12 @@
                                 <li><a href="{{ route('customers.index') }}"><i class="ti-plus"></i>Nuevo Interesado</a></li>
                             </ul>
                         </li>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="icon-people"></i><span class="hide-menu">Usuarios </span></a>
+                            <ul aria-expanded="false" class="collapse">
+                            <li><a href={{ route('users.create') }}> Nuevo Usuario  </a></li>
+                            <li><a href={{ route('users.index') }}> Permisos Usuarios  </a></li>
+                             </ul>
+                        </li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
