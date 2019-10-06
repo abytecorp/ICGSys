@@ -28,6 +28,10 @@ class ApiController extends Controller
             ->join('departaments','cities.id_departament','departaments.id')
             ->get();
     }
+    public function getCityById($city_id)
+    {
+        return $city = City::where('id', '=', $city_id)->first();
+    }
     public function getStudyCreditsByUser($user)
     {
         return $credits = Study_credit::where('us_cr','=',$user)
@@ -167,5 +171,33 @@ class ApiController extends Controller
     {
         $request['us_cr'] = Auth::user()->id;
         return $work_exp_by_cre_study = Work_exp_by_cre_study::create($request->all());
+    }
+    public function getOnlyIds()
+    {
+        return $ids = Customer::select('id','idn')
+            ->get();
+    }
+    public function getOnlyNits()
+    {
+        return $nits = Company::select('id','nit')
+            ->get();
+    }
+    public function GetCustomerById($customer)
+    {
+        return $customerSel = Customer::where('id',$customer)->first();
+    }
+    public function getCreditStudiesByCustomer($customer)
+    {
+        return $study_credits = Study_credit::select('study_credits.id', 'study_credits.customer_id', 'study_credits.w_information_id', 
+            'study_credits.st_cre_state_id', 'study_credits.us_cr', 'study_credits.created_at','st_credit_states.study_credit_state',
+            'st_credit_states.desc','users.first_name','users.second_name')
+            ->join('st_credit_states','study_credits.st_cre_state_id', 'st_credit_states.id')
+            ->join('users','study_credits.us_cr', 'users.id')
+            ->where('customer_id',$customer)
+            ->get();
+    }
+    public function getWorkInformationsByCustomerId($customer_id)
+    {
+        return $work_informations = Work_information::where('customer_id',$customer_id)->get();
     }
 }

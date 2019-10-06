@@ -14,6 +14,8 @@
 //APÎ
 //get cities
 Route::get('/api/get-cities/','ApiController@getCities');
+//get city by id
+Route::get('/api/{city_id}/get-city-by-id','ApiController@getCityById');
 //get /api/${this.user.id}/get-study-credits-by-user`
 Route::get('/api/{user}/get-study-credits-by-user', 'ApiController@getStudyCreditsByUser');
 ///api/get-id-types
@@ -48,6 +50,16 @@ Route::get('/api/{work_information}/get-work-information-by-id','ApiController@g
 Route::post('/api/store-credit-study','ApiController@storeCreditStudy');
 ///api/store-work-exp-by-credit-study
 Route::post('/api/store-work-exp-by-credit-study', 'ApiController@storeWorkExpByCreditStudy');
+//api/get-id-types
+Route::get('/api/get-only-ids','ApiController@getOnlyIds');
+//get cuystomer by id
+Route::get('/api/{customer}/get-customer-by-id','ApiController@GetCustomerById');
+//get crerdit studies by user
+Route::get('/api/{customer}/get-credit-studies-by-customer','ApiController@getCreditStudiesByCustomer');
+//get work informations by cutomeri d
+Route::get('/api/{customer_id}/get-work-informations-by-customer-id', 'ApiController@getWorkInformationsByCustomerId');
+//get only nits
+Route::get('/api/get-only-nits','ApiController@getOnlyNits');
 
 Route::get('/', function () {
     return view('auth.login');

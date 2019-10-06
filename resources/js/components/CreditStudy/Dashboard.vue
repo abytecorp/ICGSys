@@ -1,11 +1,5 @@
 <template>
     <div>
-        <div class="card-group">
-            <credistInProgress></credistInProgress>
-            <credistInProgress></credistInProgress>
-            <credistInProgress></credistInProgress>
-
-        </div>
         <div class="row">
 
                 <div class="card">
@@ -13,11 +7,12 @@
                     <h4>Tareas Comunes</h4>
                         <button class="btn btn-success" v-on:click="setModalNewCustomer()"><i class="fa fa-address-card"></i> Ingresar un nuevo cliente</button>
                         <button class="btn btn-info" v-on:click="setModalNewCustomer()"><i class="fa fa-building"></i> Nueva Empresa</button>
-                        <button class="btn btn-secondary" v-on:click="setNewCreditStudy()"><i class="fa fa-archive"></i> Iniciar Estudio de credito</button>
+                        <button class="btn btn-secondary" v-on:click="setNewCreditStudy()"><i class="fa fa-archive"></i> Nuevo formulario</button>
                     </div>
                 </div>
 
         </div>
+        <newForm></newForm>
         <newCreditStudy v-if="isNewCreditStudy"
             @setModalNewCustomer="setModalNewCustomer"
             @setModalNewCompany="setModalNewCompany"
@@ -49,14 +44,21 @@
             @closeNewCompany="closeNewCompany">
 
         </modalNewCompany>
+        <div class="card-group">
+            <credistInProgress></credistInProgress>
+            <credistInProgress></credistInProgress>
+            <credistInProgress></credistInProgress>
+
+        </div>
     </div>
 </template>
 <script>
 import credistInProgress from './CreditsInProgress'
 import modalNewCustomer from '../Customers/ModalNewCustomer'
 import studyCreditsByUser from './StudyCreditsByUser'
-import newCreditStudy from './NewCreditStudy'
+// import newCreditStudy from './NewCreditStudy'
 import modalNewCompany from '../Companies/ModalNewCompany'
+import newForm from '../Form/NewForm'
 
 import moment from 'moment'
 moment.locale('es');
@@ -68,7 +70,7 @@ export default {
         modalNewCustomer,
         modalNewCompany,
         studyCreditsByUser,
-        newCreditStudy,
+        newForm,
         moment
     },
     data () {
